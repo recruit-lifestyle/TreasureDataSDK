@@ -1,0 +1,28 @@
+//
+//  ConfigurationTests.swift
+//  TreasureDataSDK
+//
+//  Created by Yuki Nagai on 4/4/16.
+//  Copyright © 2016 Recruit Lifestyle Co., Ltd. All rights reserved.
+//
+
+import XCTest
+@testable import TreasureDataSDK
+
+final class ConfigurationTests: XCTestCase {
+
+    override func setUp() {
+        super.setUp()
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+    
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+
+    func testExample() {
+        let configuration = Configuration(key: "", database: "", table: "")
+        print(configuration)
+    }
+}
