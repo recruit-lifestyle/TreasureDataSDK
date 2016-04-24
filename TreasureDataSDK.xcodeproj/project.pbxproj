@@ -28,6 +28,8 @@
 		BF6538551CABD24E002CFF55 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538531CABD24E002CFF55 /* Realm.framework */; };
 		BF6538561CABD24E002CFF55 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538541CABD24E002CFF55 /* RealmSwift.framework */; };
 		BF9AD0981CBB8DF600E38434 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9AD0971CBB8DF600E38434 /* Device.swift */; };
+		BFE4C40E1CCCCE7500FA6BE2 /* NSURLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4C40D1CCCCE7500FA6BE2 /* NSURLSessionStub.swift */; };
+		BFE4C4151CCCD2AE00FA6BE2 /* UploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4C4141CCCD2AE00FA6BE2 /* UploaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		BF6538531CABD24E002CFF55 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		BF6538541CABD24E002CFF55 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		BF9AD0971CBB8DF600E38434 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		BFE4C40D1CCCCE7500FA6BE2 /* NSURLSessionStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionStub.swift; sourceTree = "<group>"; };
+		BFE4C4141CCCD2AE00FA6BE2 /* UploaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */,
+				BFE4C40D1CCCCE7500FA6BE2 /* NSURLSessionStub.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				BF5729E01CCB6B480086F9B4 /* DeviceTests.swift */,
 				BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */,
 				BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */,
+				BFE4C4141CCCD2AE00FA6BE2 /* UploaderTests.swift */,
 			);
 			path = TreasureDataSDKTests;
 			sourceTree = "<group>";
@@ -337,9 +343,11 @@
 				BF29CE601CB224A6003DE779 /* ConfigurationTests.swift in Sources */,
 				BF0ACC821CCB930100C70F4E /* TreasureDataTests.swift in Sources */,
 				BF5729EC1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift in Sources */,
+				BFE4C4151CCCD2AE00FA6BE2 /* UploaderTests.swift in Sources */,
 				BF6538431CABC4C6002CFF55 /* TreasureDataSDKTests.swift in Sources */,
 				BF0ACC801CCB8E4700C70F4E /* EventTests.swift in Sources */,
 				BF5729E11CCB6B480086F9B4 /* DeviceTests.swift in Sources */,
+				BFE4C40E1CCCCE7500FA6BE2 /* NSURLSessionStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -107,4 +107,8 @@ public struct Configuration {
         }
         return nil
     }
+    
+    internal var schemaName: String {
+        return "\(self.database).\(self.table)"
+    }
 }

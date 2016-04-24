@@ -10,6 +10,7 @@ import Foundation
 
 public enum Result {
     case Success
+    case NoEventToUpload
     case NetworkError
     case SystemError
     case DatabaseUnavailable

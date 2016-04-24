@@ -21,14 +21,15 @@ final class DeviceTests: XCTestCase {
     }
     
     // MARK: deviceIdentifier
-    func testThatItReturnsNewDeviceIdentifier() {
+    func testNewDeviceIdentifier() {
         Device.Cached.deviceIdentifier = ""
         let stub = UIDeviceStub()
-        let identifier = Device(device: stub).deviceIdentifier
+        Device.device = stub
+        let identifier = Device().deviceIdentifier
         let expected = stub.identifierForVendor!.UUIDString
         XCTAssertEqual(identifier, expected)
     }
-    func testThatItReturnsCachedDeviceIdentifier() {
+    func testCachedDeviceIdentifier() {
         let cached = "deviceIdentifier"
         Device.Cached.deviceIdentifier = cached
         let identifier = Device().deviceIdentifier
@@ -36,13 +37,14 @@ final class DeviceTests: XCTestCase {
     }
     
     // MARK: systemName
-    func testThatItReturnsSystemName() {
+    func testSystemName() {
         Device.Cached.systemName = ""
         let stub = UIDeviceStub()
-        let systemName = Device(device: stub).systemName
+        Device.device = stub
+        let systemName = Device().systemName
         XCTAssertEqual(systemName, stub.systemName)
     }
-    func testThatItReturnsCachedSystemName() {
+    func testCachedSystemName() {
         let cached = "cachedSystemName"
         Device.Cached.systemName = cached
         let systemName = Device().systemName
@@ -50,13 +52,14 @@ final class DeviceTests: XCTestCase {
     }
     
     // MARK: systemVersion
-    func testThatItReturnsSystemVersion() {
+    func testSystemVersion() {
         Device.Cached.systemVersion = ""
         let stub = UIDeviceStub()
-        let systemVersion = Device(device: stub).systemVersion
+        Device.device = stub
+        let systemVersion = Device().systemVersion
         XCTAssertEqual(systemVersion, stub.systemVersion)
     }
-    func testThatItReturnsCachedSystemVersion() {
+    func testCachedSystemVersion() {
         let cached = "cachedSystemVersion"
         Device.Cached.systemVersion = cached
         let systemVersion = Device().systemVersion
@@ -64,13 +67,14 @@ final class DeviceTests: XCTestCase {
     }
     
     // MARK: deviceModel
-    func testThatItReturnsDeviceModel() {
+    func testDeviceModel() {
         Device.Cached.deviceModel = ""
         let stub = UIDeviceStub()
-        let deviceModel = Device(device: stub).deviceModel
+        Device.device = stub
+        let deviceModel = Device().deviceModel
         XCTAssertEqual(deviceModel, stub.deviceModel)
     }
-    func testThatItReturnsCachedDeviceModel() {
+    func testCachedDeviceModel() {
         let cached = "cachedDeviceModel"
         Device.Cached.deviceModel = cached
         let deviceModel = Device().deviceModel

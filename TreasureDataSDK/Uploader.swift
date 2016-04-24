@@ -25,6 +25,10 @@ internal struct Uploader {
             completion?(.DatabaseUnavailable)
             return
         }
+        guard events.count > 0 else {
+            completion?(.NoEventToUpload)
+            return
+        }
         let URL = NSURL(string: configuration.endpoint)!.URLByAppendingPathComponent("ios/v3/event")
         let request = NSMutableURLRequest(URL: URL)
         let headers: [String: String] = [
@@ -37,7 +41,7 @@ internal struct Uploader {
         }
         // parameters validation is not needed for clients
         let parameters: JSONType = [
-            "\(configuration.database).\(configuration.table)": events.map { event -> JSONType in
+            configuration.schemaName: events.map { event -> JSONType in
                 var parameters: JSONType = [
                     "#UUID": event.id,
                     "#SSUT": configuration.shouldAppendSeverSideTimestamp,
@@ -94,7 +98,7 @@ internal struct Uploader {
         // clean events
         let events = Event.events(configuration: self.configuration)!
         let count = events.count
-        guard let parameters = json["\(configuration.database).\(configuration.table)"] as? [[String: Bool]] else { return .Unknown }
+        guard let parameters = json[configuration.schemaName] as? [[String: Bool]] else { return .Unknown }
         let uploaded = parameters.map { $0["success"] ?? false }.enumerate().flatMap { index, value in
             return value && index < count ? events[index] : nil
         }

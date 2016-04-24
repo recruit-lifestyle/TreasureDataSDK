@@ -11,36 +11,32 @@ import Foundation
 private let currentDevice = UIDevice.currentDevice()
 
 internal struct Device {
-    private let device: UIDevice
-    
-    init(device: UIDevice = currentDevice) {
-        self.device = device
-    }
+    internal static var device = currentDevice
     
     var deviceIdentifier: String {
         if Cached.deviceIdentifier.isEmpty {
-            Cached.deviceIdentifier = self.device.identifierForVendor?.UUIDString ?? ""
+            Cached.deviceIdentifier = self.dynamicType.device.identifierForVendor?.UUIDString ?? ""
         }
         return Cached.deviceIdentifier
     }
     
     var systemName: String {
         if Cached.systemName.isEmpty {
-            Cached.systemName = self.device.systemName
+            Cached.systemName = self.dynamicType.device.systemName
         }
         return Cached.systemName
     }
     
     var systemVersion: String {
         if Cached.systemVersion.isEmpty {
-            Cached.systemVersion = self.device.systemVersion
+            Cached.systemVersion = self.dynamicType.device.systemVersion
         }
         return Cached.systemVersion
     }
     
     var deviceModel: String {
         if Cached.deviceModel.isEmpty {
-            Cached.deviceModel = self.device.deviceModel
+            Cached.deviceModel = self.dynamicType.device.deviceModel
         }
         return Cached.deviceModel
     }

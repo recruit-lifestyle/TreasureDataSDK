@@ -48,4 +48,9 @@ final class ConfigurationTests: XCTestCase {
         XCTAssertEqual(configuration.fileURL, fileURL)
         XCTAssertNil(configuration.inMemoryIdentifier)
     }
+    
+    func testThatItReturnsSchemaName() {
+        let configuration = Configuration(key: "KEY", database: "DATABASE", table: "TABLE")
+        XCTAssertEqual(configuration.schemaName, "\(configuration.database).\(configuration.table)")
+    }
 }
