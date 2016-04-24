@@ -18,6 +18,7 @@
 		BF5729E31CCB6F250086F9B4 /* UIDevice+DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729E21CCB6F250086F9B4 /* UIDevice+DeviceModel.swift */; };
 		BF5729EC1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729EB1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift */; };
 		BF5FF2F61CCC8821000361CC /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF2F51CCC8821000361CC /* Uploader.swift */; };
+		BF5FF3381CCCA005000361CC /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF3371CCCA005000361CC /* Result.swift */; };
 		BF6538371CABC4C5002CFF55 /* TreasureDataSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6538361CABC4C5002CFF55 /* TreasureDataSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF65383E1CABC4C6002CFF55 /* TreasureDataSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538331CABC4C5002CFF55 /* TreasureDataSDK.framework */; };
 		BF6538431CABC4C6002CFF55 /* TreasureDataSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6538421CABC4C6002CFF55 /* TreasureDataSDKTests.swift */; };
@@ -64,6 +65,7 @@
 		BF5729E21CCB6F250086F9B4 /* UIDevice+DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceModel.swift"; sourceTree = "<group>"; };
 		BF5729EB1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceModelTests.swift"; sourceTree = "<group>"; };
 		BF5FF2F51CCC8821000361CC /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
+		BF5FF3371CCCA005000361CC /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		BF6538331CABC4C5002CFF55 /* TreasureDataSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TreasureDataSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6538361CABC4C5002CFF55 /* TreasureDataSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreasureDataSDK.h; sourceTree = "<group>"; };
 		BF6538381CABC4C5002CFF55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		BF5729DD1CCB5FBE0086F9B4 /* Enumerations */ = {
 			isa = PBXGroup;
 			children = (
+				BF5FF3371CCCA005000361CC /* Result.swift */,
 			);
 			path = Enumerations;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF6538501CABD1B6002CFF55 /* Configuration.swift in Sources */,
+				BF5FF3381CCCA005000361CC /* Result.swift in Sources */,
 				BF5FF2F61CCC8821000361CC /* Uploader.swift in Sources */,
 				BF6538521CABD1C1002CFF55 /* Event.swift in Sources */,
 				BF65384E1CABD185002CFF55 /* TreasureData.swift in Sources */,

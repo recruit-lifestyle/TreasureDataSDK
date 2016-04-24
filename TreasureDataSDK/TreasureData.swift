@@ -12,7 +12,8 @@ internal let bundleIdentifier = "jp.co.recruit-lifestyle.TreasureDataSDK"
 
 public final class TreasureData {
     public typealias UserInfo = [String: String]
-    public typealias UploadCompletion = Bool -> Void
+    public typealias UploadingCompletion = Result -> Void
+
     internal static var defaultInstance: TreasureData?
     internal var sessionIdentifier = ""
     
@@ -43,20 +44,10 @@ public final class TreasureData {
         self.defaultInstance?.addEvent(userInfo: userInfo)
     }
     
-    internal var events: [Event] {
-        let realm = self.configuration.realm
-        let predicate = NSPredicate(
-            format: "database = %@ AND table = %@",
-            self.configuration.database, self.configuration.table)
-        return realm?.objects(Event).filter(predicate).map { $0 } ?? []
+    public func uploadEvents(completion: UploadingCompletion? = nil) {
+        Uploader(configuration: self.configuration).uploadEvents(completion: completion)
     }
-    public func uploadEvents(completion: UploadCompletion? = nil) {
-        let events = self.events
-        // upload
-        Uploader().upload(events, configuration: self.configuration, completion: completion)
-        // clean
-    }
-    public static func uploadEvents(completion: UploadCompletion? = nil) {
+    public static func uploadEvents(completion: UploadingCompletion? = nil) {
         self.defaultInstance?.uploadEvents(completion)
     }
     

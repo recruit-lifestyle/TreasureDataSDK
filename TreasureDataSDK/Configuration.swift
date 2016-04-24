@@ -74,12 +74,16 @@ public struct Configuration {
     }
     
     internal static func defaultFileURL() -> NSURL {
-        let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask).first!
+        let applicationSupportDirectoryURL = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask).first!
         let bundleIdentifier = NSBundle.mainBundle().bundleIdentifier ?? "."
-        return directoryURL.URLByAppendingPathComponent(bundleIdentifier).URLByAppendingPathComponent("TreasureDataSDK.realm")
+        let directoryURL = applicationSupportDirectoryURL.URLByAppendingPathComponent(bundleIdentifier)
+        do {
+            try NSFileManager.defaultManager().createDirectoryAtURL(directoryURL, withIntermediateDirectories: true, attributes: nil)
+        } catch {}
+        return directoryURL.URLByAppendingPathComponent("TreasureDataSDK.realm")
     }
     
-    public var realm: RealmSwift.Realm? {
+    internal var realm: RealmSwift.Realm? {
         let configuration = Realm.Configuration(
             fileURL: self.fileURL,
             inMemoryIdentifier: self.inMemoryIdentifier,
@@ -94,6 +98,13 @@ public struct Configuration {
                     migration.deleteData(objectSchema.className)
                 }
             })
-        return try? Realm(configuration: configuration)
+        do {
+            return try Realm(configuration: configuration)
+        } catch let error {
+            if self.debug {
+                print(error)
+            }
+        }
+        return nil
     }
 }

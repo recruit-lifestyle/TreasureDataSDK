@@ -11,14 +11,20 @@ import Foundation
 private let defaultSession = NSURLSession.sharedSession()
 
 internal struct Uploader {
+    private let configuration: Configuration
     private let session: NSURLSession
     private typealias JSONType = [String: AnyObject]
     
-    init(session: NSURLSession = defaultSession) {
-        self.session = session
+    init(configuration: Configuration, session: NSURLSession = defaultSession) {
+        self.configuration = configuration
+        self.session       = session
     }
     
-    func upload(events: [Event], configuration: Configuration, completion: TreasureData.UploadCompletion?) {
+    func uploadEvents(completion completion: TreasureData.UploadingCompletion?) {
+        guard let events = Event.events(configuration: self.configuration) else {
+            completion?(.DatabaseUnavailable)
+            return
+        }
         let URL = NSURL(string: configuration.endpoint)!.URLByAppendingPathComponent("ios/v3/event")
         let request = NSMutableURLRequest(URL: URL)
         let headers: [String: String] = [
@@ -29,6 +35,7 @@ internal struct Uploader {
         headers.forEach { field, value in
             request.addValue(value, forHTTPHeaderField: field)
         }
+        // parameters validation is not needed for clients
         let parameters: JSONType = [
             "\(configuration.database).\(configuration.table)": events.map { event -> JSONType in
                 var parameters: JSONType = [
@@ -59,10 +66,48 @@ internal struct Uploader {
                 print(error)
             }
         }
-        self.session.dataTaskWithRequest(request) { data, response, error in
-            print(data)
-            print(response)
-            print(error)
+        let task = self.session.dataTaskWithRequest(request) { data, response, error in
+            let response = response as? NSHTTPURLResponse
+            let result = self.handleCompletion(
+                configuration: self.configuration,
+                data: data,
+                response: response,
+                error: error)
+            completion?(result)
         }
+        task.resume()
+    }
+    
+    private func handleCompletion(
+        configuration configuration: Configuration,
+        data: NSData?,
+        response: NSHTTPURLResponse?,
+        error: NSError?) -> Result {
+        if let _ = error { return response?.statusCode == 0 ? .NetworkError : .SystemError }
+        guard let data = data else { return .Unknown }
+        let json: JSONType
+        do {
+            let options = NSJSONReadingOptions()
+            guard let serialized = try NSJSONSerialization.JSONObjectWithData(data, options: options) as? JSONType else { return .Unknown }
+            json = serialized
+        } catch { return .Unknown }
+        // clean events
+        let events = Event.events(configuration: self.configuration)!
+        let count = events.count
+        guard let parameters = json["\(configuration.database).\(configuration.table)"] as? [[String: Bool]] else { return .Unknown }
+        let uploaded = parameters.map { $0["success"] ?? false }.enumerate().flatMap { index, value in
+            return value && index < count ? events[index] : nil
+        }
+        let realm = configuration.realm
+        do {
+            try realm?.write{
+                realm?.delete(uploaded)
+            }
+        } catch let error {
+            if configuration.debug {
+                print(error)
+            }
+        }
+        return .Success
     }
 }

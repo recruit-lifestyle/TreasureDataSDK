@@ -22,7 +22,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             key: "your_api_key",
             database: "testdb",
             table: "demotbl",
-            inMemoryIdentifier: "inMemoryIdentifier",
             shouldAppendDeviceIdentifier: true,
             shouldAppendModelInformation: true,
             shouldAppendSeverSideTimestamp: true)

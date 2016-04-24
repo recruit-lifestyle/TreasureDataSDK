@@ -59,6 +59,11 @@ internal final class Event: RealmSwift.Object {
         }
         return event
     }
+    
+    static func events(configuration configuration: Configuration) -> RealmSwift.Results<Event>? {
+        let predicate = NSPredicate(format: "database = %@ AND table = %@", configuration.database, configuration.table)
+        return configuration.realm?.objects(Event).filter(predicate)
+    }
 }
 
 internal final class KeyValue: RealmSwift.Object {
@@ -67,6 +72,12 @@ internal final class KeyValue: RealmSwift.Object {
 }
 
 internal extension List {
+    var array: [T] {
+        return self.map { $0 }
+    }
+}
+
+internal extension Results {
     var array: [T] {
         return self.map { $0 }
     }

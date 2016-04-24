@@ -27,7 +27,8 @@ final class TreasureDataTests: XCTestCase {
         TreasureData.addEvent()
         let userInfo = ["": "EmptyKey", "Key1": "Value1", "Key2": "Value2"]
         TreasureData.addEvent(userInfo: userInfo)
-        let events = TreasureData.defaultInstance!.events
+        let configuration = TreasureData.defaultInstance!.configuration
+        let events = Event.events(configuration: configuration)!.array
         XCTAssertEqual(events.count, 2)
         let event = events.last!
         event.userInfo.array.forEach { keyValue in
@@ -52,10 +53,10 @@ final class TreasureDataTests: XCTestCase {
         instance2.addEvent()
         instance3.addEvent()
         instance4.addEvent()
-        let events1 = instance1.events
-        let events2 = instance2.events
-        let events3 = instance3.events
-        let events4 = instance4.events
+        let events1 = Event.events(configuration: configuration1)!.array
+        let events2 = Event.events(configuration: configuration2)!.array
+        let events3 = Event.events(configuration: configuration3)!.array
+        let events4 = Event.events(configuration: configuration4)!.array
         func XCTAssertEvent(events: [Event], configuration: Configuration) {
             XCTAssertEqual(events.count, 1)
             XCTAssertEqual(events.first?.database, configuration.database)
