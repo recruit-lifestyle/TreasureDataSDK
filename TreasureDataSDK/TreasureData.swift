@@ -8,11 +8,16 @@
 
 import Foundation
 
-public struct TreasureData {
-    private static var defaultInstance: TreasureData?
+internal let bundleIdentifier = "jp.co.recruit-lifestyle.TreasureDataSDK"
+
+public final class TreasureData {
+    public typealias UserInfo = [String: String]
+    public typealias UploadCompletion = Bool -> Void
+    internal static var defaultInstance: TreasureData?
+    internal var sessionIdentifier = ""
     
     public let configuration: Configuration
-    /// Configure for shared instance.
+    /// Configure default instance.
     public static func configure(configuration: Configuration) {
         self.defaultInstance = TreasureData(configuration: configuration)
     }
@@ -21,16 +26,45 @@ public struct TreasureData {
         self.configuration = configuration
     }
     
-    public func addEvent(event: Event) {
-        self.configuration.realm?.add(event)
+    public func addEvent(userInfo userInfo: UserInfo = [:]) {
+        guard let realm = self.configuration.realm else { return }
+        let event = Event().appendInformation(self).appendUserInfo(userInfo)
+        do {
+            try realm.write {
+                realm.add(event)
+            }
+        } catch let error {
+            if self.configuration.debug {
+                print(error)
+            }
+        }
     }
-    public static func addEvent(event: Event) {
-        self.defaultInstance?.addEvent(event)
+    public static func addEvent(userInfo userInfo: UserInfo = [:]) {
+        self.defaultInstance?.addEvent(userInfo: userInfo)
     }
     
-    public func uploadEvents() {
+    internal var events: [Event] {
+        let realm = self.configuration.realm
+        let predicate = NSPredicate(
+            format: "database = %@ AND table = %@",
+            self.configuration.database, self.configuration.table)
+        return realm?.objects(Event).filter(predicate).map { $0 } ?? []
     }
-    public static func uploadEvents() {
-        self.defaultInstance?.uploadEvents()
+    public func uploadEvents(completion: UploadCompletion? = nil) {
+        let events = self.events
+        // upload
+        Uploader().upload(events, configuration: self.configuration, completion: completion)
+        // clean
+    }
+    public static func uploadEvents(completion: UploadCompletion? = nil) {
+        self.defaultInstance?.uploadEvents(completion)
+    }
+    
+    public func startSession() {
+        self.sessionIdentifier = NSUUID().UUIDString
+    }
+    
+    public func endSession() {
+        self.sessionIdentifier = ""
     }
 }

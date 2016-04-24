@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0ACC7C1CCB85A700C70F4E /* UIDeviceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */; };
+		BF0ACC801CCB8E4700C70F4E /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */; };
+		BF0ACC821CCB930100C70F4E /* TreasureDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */; };
 		BF29CE601CB224A6003DE779 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29CE5F1CB224A6003DE779 /* ConfigurationTests.swift */; };
-		BF29CE641CB24339003DE779 /* Realm.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538531CABD24E002CFF55 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BF29CE651CB24339003DE779 /* RealmSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538541CABD24E002CFF55 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF29CE681CB243C5003DE779 /* String+PathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29CE671CB243C5003DE779 /* String+PathComponent.swift */; };
+		BF2ED47A1CCBC455009DD294 /* Realm.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538531CABD24E002CFF55 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF2ED47B1CCBC455009DD294 /* RealmSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538541CABD24E002CFF55 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF5729E11CCB6B480086F9B4 /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729E01CCB6B480086F9B4 /* DeviceTests.swift */; };
+		BF5729E31CCB6F250086F9B4 /* UIDevice+DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729E21CCB6F250086F9B4 /* UIDevice+DeviceModel.swift */; };
+		BF5729EC1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729EB1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift */; };
+		BF5FF2F61CCC8821000361CC /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF2F51CCC8821000361CC /* Uploader.swift */; };
 		BF6538371CABC4C5002CFF55 /* TreasureDataSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6538361CABC4C5002CFF55 /* TreasureDataSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF65383E1CABC4C6002CFF55 /* TreasureDataSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538331CABC4C5002CFF55 /* TreasureDataSDK.framework */; };
 		BF6538431CABC4C6002CFF55 /* TreasureDataSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6538421CABC4C6002CFF55 /* TreasureDataSDKTests.swift */; };
@@ -33,14 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BF29CE631CB2432E003DE779 /* Copy Frameworks */ = {
+		BF2ED4791CCBC3FB009DD294 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BF29CE641CB24339003DE779 /* Realm.framework in Copy Frameworks */,
-				BF29CE651CB24339003DE779 /* RealmSwift.framework in Copy Frameworks */,
+				BF2ED47A1CCBC455009DD294 /* Realm.framework in Copy Frameworks */,
+				BF2ED47B1CCBC455009DD294 /* RealmSwift.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,8 +55,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceStub.swift; sourceTree = "<group>"; };
+		BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
+		BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasureDataTests.swift; sourceTree = "<group>"; };
 		BF29CE5F1CB224A6003DE779 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
 		BF29CE671CB243C5003DE779 /* String+PathComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+PathComponent.swift"; sourceTree = "<group>"; };
+		BF5729E01CCB6B480086F9B4 /* DeviceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTests.swift; sourceTree = "<group>"; };
+		BF5729E21CCB6F250086F9B4 /* UIDevice+DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceModel.swift"; sourceTree = "<group>"; };
+		BF5729EB1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceModelTests.swift"; sourceTree = "<group>"; };
+		BF5FF2F51CCC8821000361CC /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		BF6538331CABC4C5002CFF55 /* TreasureDataSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TreasureDataSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6538361CABC4C5002CFF55 /* TreasureDataSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreasureDataSDK.h; sourceTree = "<group>"; };
 		BF6538381CABC4C5002CFF55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,12 +99,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF0ACC731CCB809B00C70F4E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BF0ACC751CCB841D00C70F4E /* Extensions */,
+				BF0ACC741CCB841200C70F4E /* Stubs */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BF0ACC741CCB841200C70F4E /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
+		BF0ACC751CCB841D00C70F4E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		BF29CE661CB24377003DE779 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				BF29CE671CB243C5003DE779 /* String+PathComponent.swift */,
+				BF5729E21CCB6F250086F9B4 /* UIDevice+DeviceModel.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BF5729DD1CCB5FBE0086F9B4 /* Enumerations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enumerations;
+			sourceTree = "<group>";
+		};
+		BF5729EA1CCB72D20086F9B4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BF5729EB1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		BF6538291CABC4C5002CFF55 = {
@@ -115,6 +169,7 @@
 		BF6538351CABC4C5002CFF55 /* TreasureDataSDK */ = {
 			isa = PBXGroup;
 			children = (
+				BF5729DD1CCB5FBE0086F9B4 /* Enumerations */,
 				BF29CE661CB24377003DE779 /* Extensions */,
 				BF6538361CABC4C5002CFF55 /* TreasureDataSDK.h */,
 				BF6538381CABC4C5002CFF55 /* Info.plist */,
@@ -122,6 +177,7 @@
 				BF65384F1CABD1B6002CFF55 /* Configuration.swift */,
 				BF6538511CABD1C1002CFF55 /* Event.swift */,
 				BF9AD0971CBB8DF600E38434 /* Device.swift */,
+				BF5FF2F51CCC8821000361CC /* Uploader.swift */,
 			);
 			path = TreasureDataSDK;
 			sourceTree = "<group>";
@@ -129,9 +185,14 @@
 		BF6538411CABC4C6002CFF55 /* TreasureDataSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				BF0ACC731CCB809B00C70F4E /* Helpers */,
+				BF5729EA1CCB72D20086F9B4 /* Extensions */,
 				BF6538421CABC4C6002CFF55 /* TreasureDataSDKTests.swift */,
 				BF6538441CABC4C6002CFF55 /* Info.plist */,
 				BF29CE5F1CB224A6003DE779 /* ConfigurationTests.swift */,
+				BF5729E01CCB6B480086F9B4 /* DeviceTests.swift */,
+				BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */,
+				BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */,
 			);
 			path = TreasureDataSDKTests;
 			sourceTree = "<group>";
@@ -167,7 +228,7 @@
 				BF65382F1CABC4C5002CFF55 /* Frameworks */,
 				BF6538301CABC4C5002CFF55 /* Headers */,
 				BF6538311CABC4C5002CFF55 /* Resources */,
-				BF29CE631CB2432E003DE779 /* Copy Frameworks */,
+				BF2ED4791CCBC3FB009DD294 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -255,8 +316,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF6538501CABD1B6002CFF55 /* Configuration.swift in Sources */,
+				BF5FF2F61CCC8821000361CC /* Uploader.swift in Sources */,
 				BF6538521CABD1C1002CFF55 /* Event.swift in Sources */,
 				BF65384E1CABD185002CFF55 /* TreasureData.swift in Sources */,
+				BF5729E31CCB6F250086F9B4 /* UIDevice+DeviceModel.swift in Sources */,
 				BF29CE681CB243C5003DE779 /* String+PathComponent.swift in Sources */,
 				BF9AD0981CBB8DF600E38434 /* Device.swift in Sources */,
 			);
@@ -266,8 +329,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF0ACC7C1CCB85A700C70F4E /* UIDeviceStub.swift in Sources */,
 				BF29CE601CB224A6003DE779 /* ConfigurationTests.swift in Sources */,
+				BF0ACC821CCB930100C70F4E /* TreasureDataTests.swift in Sources */,
+				BF5729EC1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift in Sources */,
 				BF6538431CABC4C6002CFF55 /* TreasureDataSDKTests.swift in Sources */,
+				BF0ACC801CCB8E4700C70F4E /* EventTests.swift in Sources */,
+				BF5729E11CCB6B480086F9B4 /* DeviceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

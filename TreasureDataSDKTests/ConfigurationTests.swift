@@ -21,8 +21,31 @@ final class ConfigurationTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() {
-        let configuration = Configuration(key: "", database: "", table: "")
-        print(configuration)
+    func testThatItConfiguresDefaultRealmFileURL() {
+        let configuration = Configuration(key: "KEY", database: "DATABASE", table: "TABLE")
+        XCTAssertEqual(configuration.fileURL, Configuration.defaultFileURL())
+        XCTAssertNil(configuration.inMemoryIdentifier)
+    }
+    
+    func testThatItConfiguresRealmFileURL() {
+        let defaultFileURL = Configuration.defaultFileURL()
+        let renamedURL = defaultFileURL.URLByDeletingLastPathComponent?.URLByAppendingPathComponent("Renamed.realm")
+        let configuration = Configuration(key: "KEY", database: "DATABASE", table: "TABLE", fileURL: renamedURL)
+        XCTAssertEqual(configuration.fileURL, renamedURL)
+        XCTAssertNil(configuration.inMemoryIdentifier)
+    }
+    
+    func testThatItConfiguresRealmInMemoryIdentifier() {
+        let inMemoryIdentifier = "inMemoryIdentifier"
+        let configuration = Configuration(key: "KEY", database: "DATABASE", table: "TABLE", inMemoryIdentifier: inMemoryIdentifier)
+        XCTAssertNil(configuration.fileURL)
+        XCTAssertEqual(configuration.inMemoryIdentifier, inMemoryIdentifier)
+    }
+    
+    func testThatItRealmFileURLIsPriorToInMemoryIdentifier() {
+        let fileURL = Configuration.defaultFileURL()
+        let configuration = Configuration(key: "KEY", database: "DATABASE", table: "TABLE", fileURL: fileURL, inMemoryIdentifier: "inMemoryIdentifier")
+        XCTAssertEqual(configuration.fileURL, fileURL)
+        XCTAssertNil(configuration.inMemoryIdentifier)
     }
 }
