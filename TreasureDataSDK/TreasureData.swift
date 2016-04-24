@@ -54,8 +54,14 @@ public final class TreasureData {
     public func startSession() {
         self.sessionIdentifier = NSUUID().UUIDString
     }
+    public static func startSession() {
+        self.defaultInstance?.startSession()
+    }
     
     public func endSession() {
         self.sessionIdentifier = ""
+    }
+    public static func endSession() {
+        self.defaultInstance?.endSession()
     }
 }
