@@ -15,7 +15,7 @@ iOS SDK for [TreasureData](http://www.treasuredata.com/). With this SDK, you can
 To integrate TreasureDataSDK into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "uny/TreasureDataSDK"
+github "recruit-lifestyle/TreasureDataSDK"
 ```
 
 Run `carthage update` to build the framework and drag the built `TreasureDataSDK.framework` into your Xcode project.
@@ -96,4 +96,27 @@ TreasureData.startSession()
 
 // End
 TreasureData.endSession()
+```
+
+## Credits
+TreasureDataSDK is owned and maintained by [Recruit Lifestyle Co., Ltd](http://www.recruit-lifestyle.co.jp/).
+
+**Contributors**
+* [Yuki Nagai](https://github.com/uny)
+
+## License
+
+```
+Copyright (c) 2015 RECRUIT LIFESTYLE CO., LTD.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
