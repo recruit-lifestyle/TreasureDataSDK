@@ -107,7 +107,7 @@ TreasureDataSDK is owned and maintained by [Recruit Lifestyle Co., Ltd](http://w
 ## License
 
 ```
-Copyright (c) 2015 RECRUIT LIFESTYLE CO., LTD.
+Copyright (c) 2016 RECRUIT LIFESTYLE CO., LTD.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
