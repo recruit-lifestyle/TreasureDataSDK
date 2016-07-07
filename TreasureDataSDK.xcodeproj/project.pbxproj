@@ -7,6 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1167ED1D2E2723001988CA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65384F1CABD1B6002CFF55 /* Configuration.swift */; };
+		0B1167EE1D2E2723001988CA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF3371CCCA005000361CC /* Result.swift */; };
+		0B1167EF1D2E2723001988CA /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF2F51CCC8821000361CC /* Uploader.swift */; };
+		0B1167F01D2E2723001988CA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6538511CABD1C1002CFF55 /* Event.swift */; };
+		0B1167F11D2E2723001988CA /* TreasureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65384D1CABD185002CFF55 /* TreasureData.swift */; };
+		0B1167F21D2E2723001988CA /* UIDevice+DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729E21CCB6F250086F9B4 /* UIDevice+DeviceModel.swift */; };
+		0B1167F31D2E2723001988CA /* String+PathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29CE671CB243C5003DE779 /* String+PathComponent.swift */; };
+		0B1167F41D2E2723001988CA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9AD0971CBB8DF600E38434 /* Device.swift */; };
+		0B1167F61D2E2723001988CA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538531CABD24E002CFF55 /* Realm.framework */; };
+		0B1167F71D2E2723001988CA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538541CABD24E002CFF55 /* RealmSwift.framework */; };
+		0B1167F91D2E2723001988CA /* TreasureDataSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6538361CABC4C5002CFF55 /* TreasureDataSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0B1167FC1D2E2723001988CA /* Realm.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538531CABD24E002CFF55 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0B1167FD1D2E2723001988CA /* RealmSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538541CABD24E002CFF55 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0B1168071D2E2724001988CA /* UIDeviceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */; };
+		0B1168081D2E2724001988CA /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29CE5F1CB224A6003DE779 /* ConfigurationTests.swift */; };
+		0B1168091D2E2724001988CA /* TreasureDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */; };
+		0B11680A1D2E2724001988CA /* UIDevice+DeviceModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729EB1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift */; };
+		0B11680B1D2E2724001988CA /* UploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4C4141CCCD2AE00FA6BE2 /* UploaderTests.swift */; };
+		0B11680C1D2E2724001988CA /* TreasureDataSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6538421CABC4C6002CFF55 /* TreasureDataSDKTests.swift */; };
+		0B11680D1D2E2724001988CA /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */; };
+		0B11680E1D2E2724001988CA /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729E01CCB6B480086F9B4 /* DeviceTests.swift */; };
+		0B11680F1D2E2724001988CA /* NSURLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4C40D1CCCCE7500FA6BE2 /* NSURLSessionStub.swift */; };
+		0B1168111D2E2724001988CA /* TreasureDataSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538331CABC4C5002CFF55 /* TreasureDataSDK.framework */; };
 		BF0ACC7C1CCB85A700C70F4E /* UIDeviceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */; };
 		BF0ACC801CCB8E4700C70F4E /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */; };
 		BF0ACC821CCB930100C70F4E /* TreasureDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */; };
@@ -33,6 +56,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0B1168051D2E2724001988CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF65382A1CABC4C5002CFF55 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF6538321CABC4C5002CFF55;
+			remoteInfo = TreasureDataSDK;
+		};
 		BF65383F1CABC4C6002CFF55 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BF65382A1CABC4C5002CFF55 /* Project object */;
@@ -43,6 +73,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0B1167FB1D2E2723001988CA /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0B1167FC1D2E2723001988CA /* Realm.framework in Copy Frameworks */,
+				0B1167FD1D2E2723001988CA /* RealmSwift.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF2ED4791CCBC3FB009DD294 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,6 +100,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B1168011D2E2723001988CA /* TreasureDataSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TreasureDataSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B1168161D2E2724001988CA /* TreasureDataSDKTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TreasureDataSDKTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceStub.swift; sourceTree = "<group>"; };
 		BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasureDataTests.swift; sourceTree = "<group>"; };
@@ -85,6 +129,23 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0B1167F51D2E2723001988CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B1167F61D2E2723001988CA /* Realm.framework in Frameworks */,
+				0B1167F71D2E2723001988CA /* RealmSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B1168101D2E2724001988CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B1168111D2E2724001988CA /* TreasureDataSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF65382F1CABC4C5002CFF55 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -105,6 +166,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B2C26711D2E2F45009C0702 /* SupportingFile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SupportingFile;
+			sourceTree = "<group>";
+		};
 		BF0ACC731CCB809B00C70F4E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +230,7 @@
 				BF6538351CABC4C5002CFF55 /* TreasureDataSDK */,
 				BF6538411CABC4C6002CFF55 /* TreasureDataSDKTests */,
 				BF6538341CABC4C5002CFF55 /* Products */,
+				0B2C26711D2E2F45009C0702 /* SupportingFile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +239,8 @@
 			children = (
 				BF6538331CABC4C5002CFF55 /* TreasureDataSDK.framework */,
 				BF65383D1CABC4C6002CFF55 /* TreasureDataSDKTests.xctest */,
+				0B1168011D2E2723001988CA /* TreasureDataSDK.framework */,
+				0B1168161D2E2724001988CA /* TreasureDataSDKTests-iOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -218,6 +289,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		0B1167F81D2E2723001988CA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B1167F91D2E2723001988CA /* TreasureDataSDK.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF6538301CABC4C5002CFF55 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -229,6 +308,43 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0B1167EB1D2E2723001988CA /* TreasureDataSDK-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B1167FE1D2E2723001988CA /* Build configuration list for PBXNativeTarget "TreasureDataSDK-iOS" */;
+			buildPhases = (
+				0B1167EC1D2E2723001988CA /* Sources */,
+				0B1167F51D2E2723001988CA /* Frameworks */,
+				0B1167F81D2E2723001988CA /* Headers */,
+				0B1167FA1D2E2723001988CA /* Resources */,
+				0B1167FB1D2E2723001988CA /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TreasureDataSDK-iOS";
+			productName = TreasureDataSDK;
+			productReference = 0B1168011D2E2723001988CA /* TreasureDataSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0B1168031D2E2724001988CA /* TreasureDataSDKTests-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B1168131D2E2724001988CA /* Build configuration list for PBXNativeTarget "TreasureDataSDKTests-iOS" */;
+			buildPhases = (
+				0B1168061D2E2724001988CA /* Sources */,
+				0B1168101D2E2724001988CA /* Frameworks */,
+				0B1168121D2E2724001988CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0B1168041D2E2724001988CA /* PBXTargetDependency */,
+			);
+			name = "TreasureDataSDKTests-iOS";
+			productName = TreasureDataSDKTests;
+			productReference = 0B1168161D2E2724001988CA /* TreasureDataSDKTests-iOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BF6538321CABC4C5002CFF55 /* TreasureDataSDK */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF6538471CABC4C6002CFF55 /* Build configuration list for PBXNativeTarget "TreasureDataSDK" */;
@@ -298,11 +414,27 @@
 			targets = (
 				BF6538321CABC4C5002CFF55 /* TreasureDataSDK */,
 				BF65383C1CABC4C6002CFF55 /* TreasureDataSDKTests */,
+				0B1167EB1D2E2723001988CA /* TreasureDataSDK-iOS */,
+				0B1168031D2E2724001988CA /* TreasureDataSDKTests-iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0B1167FA1D2E2723001988CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B1168121D2E2724001988CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF6538311CABC4C5002CFF55 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -320,6 +452,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0B1167EC1D2E2723001988CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B1167ED1D2E2723001988CA /* Configuration.swift in Sources */,
+				0B1167EE1D2E2723001988CA /* Result.swift in Sources */,
+				0B1167EF1D2E2723001988CA /* Uploader.swift in Sources */,
+				0B1167F01D2E2723001988CA /* Event.swift in Sources */,
+				0B1167F11D2E2723001988CA /* TreasureData.swift in Sources */,
+				0B1167F21D2E2723001988CA /* UIDevice+DeviceModel.swift in Sources */,
+				0B1167F31D2E2723001988CA /* String+PathComponent.swift in Sources */,
+				0B1167F41D2E2723001988CA /* Device.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B1168061D2E2724001988CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B1168071D2E2724001988CA /* UIDeviceStub.swift in Sources */,
+				0B1168081D2E2724001988CA /* ConfigurationTests.swift in Sources */,
+				0B1168091D2E2724001988CA /* TreasureDataTests.swift in Sources */,
+				0B11680A1D2E2724001988CA /* UIDevice+DeviceModelTests.swift in Sources */,
+				0B11680B1D2E2724001988CA /* UploaderTests.swift in Sources */,
+				0B11680C1D2E2724001988CA /* TreasureDataSDKTests.swift in Sources */,
+				0B11680D1D2E2724001988CA /* EventTests.swift in Sources */,
+				0B11680E1D2E2724001988CA /* DeviceTests.swift in Sources */,
+				0B11680F1D2E2724001988CA /* NSURLSessionStub.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF65382E1CABC4C5002CFF55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,6 +517,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0B1168041D2E2724001988CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF6538321CABC4C5002CFF55 /* TreasureDataSDK */;
+			targetProxy = 0B1168051D2E2724001988CA /* PBXContainerItemProxy */;
+		};
 		BF6538401CABC4C6002CFF55 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BF6538321CABC4C5002CFF55 /* TreasureDataSDK */;
@@ -362,6 +530,77 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0B1167FF1D2E2723001988CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TreasureDataSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.recruit-lifestyle.TreasureDataSDK";
+				PRODUCT_NAME = TreasureDataSDK;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0B1168001D2E2723001988CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TreasureDataSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.recruit-lifestyle.TreasureDataSDK";
+				PRODUCT_NAME = TreasureDataSDK;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		0B1168141D2E2724001988CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TreasureDataSDKTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.recruit-lifestyle.TreasureDataSDKTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0B1168151D2E2724001988CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = TreasureDataSDKTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.recruit-lifestyle.TreasureDataSDKTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		BF6538451CABC4C6002CFF55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -527,6 +766,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0B1167FE1D2E2723001988CA /* Build configuration list for PBXNativeTarget "TreasureDataSDK-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B1167FF1D2E2723001988CA /* Debug */,
+				0B1168001D2E2723001988CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B1168131D2E2724001988CA /* Build configuration list for PBXNativeTarget "TreasureDataSDKTests-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B1168141D2E2724001988CA /* Debug */,
+				0B1168151D2E2724001988CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BF65382D1CABC4C5002CFF55 /* Build configuration list for PBXProject "TreasureDataSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

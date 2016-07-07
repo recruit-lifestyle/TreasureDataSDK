@@ -7,48 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B2C266F1D2E2C63009C0702 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2C266D1D2E2C63009C0702 /* Realm.framework */; };
+		0B2C26701D2E2C63009C0702 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2C266E1D2E2C63009C0702 /* RealmSwift.framework */; };
+		0B2C26731D2E3419009C0702 /* TreasureDataSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2C26721D2E3419009C0702 /* TreasureDataSDK.framework */; };
 		BF5FF3061CCC939E000361CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF3051CCC939E000361CC /* AppDelegate.swift */; };
 		BF5FF3081CCC939E000361CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF3071CCC939E000361CC /* ViewController.swift */; };
 		BF5FF30D1CCC939E000361CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF30C1CCC939E000361CC /* Assets.xcassets */; };
 		BF5FF3101CCC939E000361CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF30E1CCC939E000361CC /* LaunchScreen.storyboard */; };
-		BF5FF3301CCC96D4000361CC /* TreasureDataSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5FF32B1CCC96C5000361CC /* TreasureDataSDK.framework */; };
 		BF6832E01CCCEF4C00809904 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6832DF1CCCEF4C00809904 /* SnapKit.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		BF5FF32A1CCC96C5000361CC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BF5FF3251CCC96C5000361CC /* TreasureDataSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BF6538331CABC4C5002CFF55;
-			remoteInfo = TreasureDataSDK;
-		};
-		BF5FF32C1CCC96C5000361CC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BF5FF3251CCC96C5000361CC /* TreasureDataSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BF65383D1CABC4C6002CFF55;
-			remoteInfo = TreasureDataSDKTests;
-		};
-		BF5FF32E1CCC96CF000361CC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BF5FF3251CCC96C5000361CC /* TreasureDataSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BF6538321CABC4C5002CFF55;
-			remoteInfo = TreasureDataSDK;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		0B2C266D1D2E2C63009C0702 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		0B2C266E1D2E2C63009C0702 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		0B2C26721D2E3419009C0702 /* TreasureDataSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TreasureDataSDK.framework; path = Carthage/Build/iOS/TreasureDataSDK.framework; sourceTree = "<group>"; };
 		BF5FF3021CCC939E000361CC /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5FF3051CCC939E000361CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF5FF3071CCC939E000361CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF5FF30C1CCC939E000361CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF5FF30F1CCC939E000361CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF5FF3111CCC939E000361CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF5FF3251CCC96C5000361CC /* TreasureDataSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TreasureDataSDK.xcodeproj; path = ../TreasureDataSDK.xcodeproj; sourceTree = "<group>"; };
-		BF5FF3311CCC975D000361CC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = ../Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
-		BF5FF3321CCC975D000361CC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = ../Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		BF6832DF1CCCEF4C00809904 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,8 +35,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF5FF3301CCC96D4000361CC /* TreasureDataSDK.framework in Frameworks */,
+				0B2C26731D2E3419009C0702 /* TreasureDataSDK.framework in Frameworks */,
+				0B2C266F1D2E2C63009C0702 /* Realm.framework in Frameworks */,
 				BF6832E01CCCEF4C00809904 /* SnapKit.framework in Frameworks */,
+				0B2C26701D2E2C63009C0702 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				BF5FF3351CCC9763000361CC /* Frameworks */,
-				BF5FF3251CCC96C5000361CC /* TreasureDataSDK.xcodeproj */,
 				BF5FF3041CCC939E000361CC /* Example */,
 				BF5FF3031CCC939E000361CC /* Products */,
 			);
@@ -95,21 +74,13 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		BF5FF3261CCC96C5000361CC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BF5FF32B1CCC96C5000361CC /* TreasureDataSDK.framework */,
-				BF5FF32D1CCC96C5000361CC /* TreasureDataSDKTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		BF5FF3351CCC9763000361CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B2C26721D2E3419009C0702 /* TreasureDataSDK.framework */,
+				0B2C266D1D2E2C63009C0702 /* Realm.framework */,
+				0B2C266E1D2E2C63009C0702 /* RealmSwift.framework */,
 				BF6832DF1CCCEF4C00809904 /* SnapKit.framework */,
-				BF5FF3311CCC975D000361CC /* Realm.framework */,
-				BF5FF3321CCC975D000361CC /* RealmSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,7 +100,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BF5FF32F1CCC96CF000361CC /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -162,35 +132,12 @@
 			mainGroup = BF5FF2F91CCC939E000361CC;
 			productRefGroup = BF5FF3031CCC939E000361CC /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = BF5FF3261CCC96C5000361CC /* Products */;
-					ProjectRef = BF5FF3251CCC96C5000361CC /* TreasureDataSDK.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				BF5FF3011CCC939E000361CC /* Example */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		BF5FF32B1CCC96C5000361CC /* TreasureDataSDK.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = TreasureDataSDK.framework;
-			remoteRef = BF5FF32A1CCC96C5000361CC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BF5FF32D1CCC96C5000361CC /* TreasureDataSDKTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = TreasureDataSDKTests.xctest;
-			remoteRef = BF5FF32C1CCC96C5000361CC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BF5FF3001CCC939E000361CC /* Resources */ = {
@@ -212,6 +159,9 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TreasureDataSDK.framework",
 			);
 			name = "Run Carthage Script";
 			outputPaths = (
@@ -233,14 +183,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BF5FF32F1CCC96CF000361CC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TreasureDataSDK;
-			targetProxy = BF5FF32E1CCC96CF000361CC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BF5FF30E1CCC939E000361CC /* LaunchScreen.storyboard */ = {
