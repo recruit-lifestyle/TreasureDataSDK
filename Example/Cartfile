@@ -1,2 +1,2 @@
 github "SnapKit/SnapKit"
-github "iida-hayato/TreasureDataSDK" "carthage-support"
+github "recruit-lifestyle/TreasureDataSDK" "master"
