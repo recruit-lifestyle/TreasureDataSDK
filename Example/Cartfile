@@ -1,1 +1,2 @@
 github "SnapKit/SnapKit"
+github "iida-hayato/TreasureDataSDK" "carthage-support"
