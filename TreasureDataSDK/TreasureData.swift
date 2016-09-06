@@ -28,18 +28,10 @@ public final class TreasureData {
     }
     
     public func addEvent(userInfo userInfo: UserInfo = [:]) {
-        guard let realm = self.configuration.realm else { return }
         let event = Event().appendInformation(self).appendUserInfo(userInfo)
-        do {
-            try realm.write {
-                realm.add(event)
-            }
-        } catch let error {
-            if self.configuration.debug {
-                print(error)
-            }
-        }
+        Uploader(configuration: self.configuration).uploadEventAndStoreIfFailed(event: event)
     }
+    
     public static func addEvent(userInfo userInfo: UserInfo = [:]) {
         self.defaultInstance?.addEvent(userInfo: userInfo)
     }
@@ -47,6 +39,7 @@ public final class TreasureData {
     public func uploadAllStoredEvents(completion: UploadingCompletion? = nil) {
         Uploader(configuration: self.configuration).uploadAllStoredEvents(completion: completion)
     }
+    
     public static func uploadAllStoredEvents(completion: UploadingCompletion? = nil) {
         self.defaultInstance?.uploadAllStoredEvents(completion)
     }

@@ -21,64 +21,104 @@ internal struct Uploader {
         self.session       = session
     }
     
-    func uploadAllStoredEvents(completion completion: TreasureData.UploadingCompletion?) {
+    func uploadEventAndStoreIfFailed(event event: Event, completion: TreasureData.UploadingCompletion? = nil) {
+        self.uploadEvents(events: [event]) { result, a, failedToUploadEvent in
+            if failedToUploadEvent.count > 0 {
+                // Store events to realm that failed to be uploaded.
+                let realm = self.configuration.realm
+                do {
+                    try realm?.write{
+                        realm?.add(failedToUploadEvent)
+                    }
+                } catch let error {
+                    if self.configuration.debug {
+                        print(error)
+                    }
+                }
+            }
+            completion?(result)
+        }
+    }
+    
+    func uploadAllStoredEvents(completion completion: TreasureData.UploadingCompletion? = nil) {
         guard let events = Event.events(configuration: self.configuration)?.array else {
             completion?(.DatabaseUnavailable)
             return
         }
         
+        self.uploadEvents(events: events) { result, uploadedEvents, _ in
+            if uploadedEvents.count > 0 {
+                // Delete events that succeeded to be uploaded.
+                let realm = self.configuration.realm
+                do {
+                    try realm?.write{
+                        realm?.delete(uploadedEvents)
+                    }
+                } catch let error {
+                    if self.configuration.debug {
+                        print(error)
+                    }
+                }
+            }
+            
+            completion?(result)
+        }
+    }
+    
+    private func uploadEvents(events events: [Event], completion: (result: Result, uploaded: [Event], failedToUploadEvents: [Event]) -> Void) {
         guard events.count > 0 else {
-            completion?(.NoEventToUpload)
+            completion(result: .NoEventToUpload, uploaded: [], failedToUploadEvents: events)
             return
         }
         
         guard let request = UploadRequest(configuration: configuration, events: events).request else {
-            completion?(.BuildingRequestError)
+            completion(result: .BuildingRequestError, uploaded: [], failedToUploadEvents: events)
             return
         }
         
         let task = self.session.dataTaskWithRequest(request) { data, response, error in
             let response = response as? NSHTTPURLResponse
-            let result = self.handleCompletion(
-                configuration: self.configuration,
-                data: data,
-                response: response,
-                error: error)
-            completion?(result)
+            
+            if let _ = error {
+                let error: Result = (response?.statusCode == 0) ? .NetworkError : .SystemError
+                completion(result: error, uploaded: [], failedToUploadEvents: events)
+                return
+            }
+            
+            guard let data = data else {
+                completion(result: .Unknown, uploaded: [], failedToUploadEvents: events)
+                return
+            }
+            
+            let json: JSONType
+            do {
+                let options = NSJSONReadingOptions()
+                guard let serialized = try NSJSONSerialization.JSONObjectWithData(data, options: options) as? JSONType else {
+                    completion(result: .Unknown, uploaded: [], failedToUploadEvents: events)
+                    return
+                }
+                json = serialized
+            } catch {
+                completion(result: .Unknown, uploaded: [], failedToUploadEvents: events)
+                return
+            }
+            
+            guard let parameters = json[self.configuration.schemaName] as? [[String: Bool]] else {
+                completion(result: .Unknown, uploaded: [], failedToUploadEvents: events)
+                return
+            }
+            
+            let count = events.count
+            let uploaded = parameters.map { $0["success"] ?? false }.enumerate().flatMap { index, value in
+                return value && index < count ? events[index] : nil
+            }
+            
+            let failedToUploadEvents = parameters.map { $0["success"] ?? false }.enumerate().flatMap { index, value in
+                return !value && index < count ? events[index] : nil
+            }
+            
+            completion(result: .Success, uploaded: uploaded, failedToUploadEvents: failedToUploadEvents)
         }
         task.resume()
-    }
-    
-    private func handleCompletion(
-        configuration configuration: Configuration,
-        data: NSData?,
-        response: NSHTTPURLResponse?,
-        error: NSError?) -> Result {
-        if let _ = error { return response?.statusCode == 0 ? .NetworkError : .SystemError }
-        guard let data = data else { return .Unknown }
-        let json: JSONType
-        do {
-            let options = NSJSONReadingOptions()
-            guard let serialized = try NSJSONSerialization.JSONObjectWithData(data, options: options) as? JSONType else { return .Unknown }
-            json = serialized
-        } catch { return .Unknown }
-        // clean events
-        let events = Event.events(configuration: self.configuration)!
-        let count = events.count
-        guard let parameters = json[configuration.schemaName] as? [[String: Bool]] else { return .Unknown }
-        let uploaded = parameters.map { $0["success"] ?? false }.enumerate().flatMap { index, value in
-            return value && index < count ? events[index] : nil
-        }
-        let realm = configuration.realm
-        do {
-            try realm?.write{
-                realm?.delete(uploaded)
-            }
-        } catch let error {
-            if configuration.debug {
-                print(error)
-            }
-        }
-        return .Success
     }
 }

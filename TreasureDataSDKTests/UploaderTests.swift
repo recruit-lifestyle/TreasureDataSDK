@@ -20,6 +20,77 @@ final class UploaderTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+
+    func testUploadEventsAndStoreIfFailedWhenSucceededToUpload() {
+        let configuration = Configuration(
+            key: "KEY",
+            database: "DATABASE",
+            table: "TABLE",
+            inMemoryIdentifier: "inMemoryIdentifier")
+        let instance = TreasureData(configuration: configuration)
+        let event = Event().appendInformation(instance)
+        let stub = NSURLSessionStub()
+        let data = self.dataResponse(configuration: configuration, events: [event]) { _ in return true }
+        stub.completionResponse = (data, nil, nil)
+        
+        Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event) { result in
+            XCTAssertEqual(result.hashValue, Result.Success.hashValue)
+            let storedEvents = Event.events(configuration: configuration)!.array
+            storedEvents.forEach { XCTAssertNotEqual($0.id, event.id) }
+        }
+    }
+
+    func testUploadEventsAndStoreIfFailedWhenFailedToUpload() {
+        let configuration = Configuration(
+            key: "KEY",
+            database: "DATABASE",
+            table: "TABLE",
+            inMemoryIdentifier: "inMemoryIdentifier")
+        let instance = TreasureData(configuration: configuration)
+        let event = Event().appendInformation(instance)
+
+        let stub = NSURLSessionStub()
+        let data = self.dataResponse(configuration: configuration, events: [event]) { index in return false }
+        stub.completionResponse = (data, nil, nil)
+        
+        Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event) { result in
+            XCTAssertEqual(result.hashValue, Result.Success.hashValue)
+            
+            let storedEvent = Event.events(configuration: configuration)!.array.first
+            XCTAssertEqual(storedEvent?.id, event.id)
+        }
+    }
+    
+    func testUploadAllStoredEvents() {
+        let configuration = Configuration(
+            key: "KEY",
+            database: "DATABASE",
+            table: "TABLE",
+            inMemoryIdentifier: "inMemoryIdentifier")
+        let instance = TreasureData(configuration: configuration)
+        let event1 = Event().appendInformation(instance)
+        let event2 = Event().appendInformation(instance)
+        let events = [event1, event2]
+        
+        let stub = NSURLSessionStub()
+        
+        // For Saving events to realm
+        let dataForFailure = self.dataResponse(configuration: configuration, events: events) { _ in return false }
+        stub.completionResponse = (dataForFailure, nil, nil)
+        Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event1)
+        Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event2)
+        let storedEvents = Event.events(configuration: configuration)?.array
+        XCTAssertEqual(storedEvents?.count, 2)
+        
+        
+        let dataForSuccess = self.dataResponse(configuration: configuration, events: events) { _ in return true }
+        stub.completionResponse = (dataForSuccess, nil, nil)
+        Uploader(configuration: configuration, session: stub).uploadAllStoredEvents { result in
+            XCTAssertEqual(result.hashValue, Result.Success.hashValue)
+            let storedEvents = Event.events(configuration: configuration)!.array
+            XCTAssertTrue(storedEvents.isEmpty)
+        }
+    }
     
     func testNoEventToUpload() {
         let configuration = Configuration(
@@ -28,107 +99,12 @@ final class UploaderTests: XCTestCase {
             table: "TABLE",
             inMemoryIdentifier: "inMemoryIdentifier")
         let stub = NSURLSessionStub()
-        Uploader(configuration: configuration, session: stub).uploadAllStoredEvents { result in
+        Uploader(configuration: configuration, session: stub).uploadAllStoredEvents() { result in
             XCTAssertEqual(result.hashValue, Result.NoEventToUpload.hashValue)
         }
     }
     
-    func testRequestParameters() {
-        let deviceStub = UIDeviceStub()
-        Device.device = deviceStub
-        let configuration = Configuration(
-            key: "KEY",
-            database: "DATABASE",
-            table: "TABLE",
-            inMemoryIdentifier: "inMemoryIdentifier",
-            shouldAppendDeviceIdentifier: true,
-            shouldAppendModelInformation: true,
-            shouldAppendSeverSideTimestamp: true)
-        let instance = TreasureData(configuration: configuration)
-        instance.startSession()
-        instance.addEvent()
-        let stub = NSURLSessionStub()
-        stub.requestValidation = { request in
-            let headers = request.allHTTPHeaderFields!
-            XCTAssertEqual(headers["Content-Type"], "application/json")
-            XCTAssertEqual(headers["X-TD-Data-Type"], "k")
-            XCTAssertEqual(headers["X-TD-Write-Key"], configuration.key)
-            let parameters = self.requestParameters(request)
-            XCTAssertNotNil(parameters[configuration.schemaName])
-            let events = parameters[configuration.schemaName] as! [[String: AnyObject]]
-            XCTAssertEqual(events.count, 1)
-            let event = events.first!
-            XCTAssertNotNil(event["#UUID"])
-            XCTAssertEqual(event["#SSUT"] as? Bool, true)
-            XCTAssertNotNil(event["timestamp"])
-            XCTAssertEqual(event["td_model"] as? String, deviceStub.deviceModel)
-            XCTAssertEqual(event["td_os_type"] as? String, deviceStub.systemName)
-            XCTAssertEqual(event["td_os_ver"] as? String, deviceStub.systemVersion)
-            XCTAssertFalse((event["td_session_id"] as? String)?.isEmpty ?? true)
-            XCTAssertEqual(event["td_uuid"] as? String, deviceStub.identifierForVendor?.UUIDString)
-        }
-        let data = self.dataResponse(configuration: configuration) { _ in return true }
-        stub.completionResponse = (data, nil, nil)
-        Uploader(configuration: configuration, session: stub).uploadAllStoredEvents { result in
-        }
-    }
-
-    func testAllUploaded() {
-        let configuration = Configuration(
-            key: "KEY",
-            database: "DATABASE",
-            table: "TABLE",
-            inMemoryIdentifier: "inMemoryIdentifier")
-        let instance = TreasureData(configuration: configuration)
-        instance.addEvent()
-        instance.addEvent()
-        instance.addEvent()
-        instance.addEvent()
-        let stub = NSURLSessionStub()
-        let data = self.dataResponse(configuration: configuration) { _ in return true }
-        stub.completionResponse = (data, nil, nil)
-        Uploader(configuration: configuration, session: stub).uploadAllStoredEvents { result in
-            XCTAssertEqual(result.hashValue, Result.Success.hashValue)
-            let events = Event.events(configuration: configuration)!.array
-            XCTAssertTrue(events.isEmpty)
-        }
-    }
-    
-    func testSomeUploaded() {
-        let configuration = Configuration(
-            key: "KEY",
-            database: "DATABASE",
-            table: "TABLE",
-            inMemoryIdentifier: "inMemoryIdentifier")
-        let instance = TreasureData(configuration: configuration)
-        instance.addEvent()
-        instance.addEvent()
-        instance.addEvent()
-        instance.addEvent()
-        let stub = NSURLSessionStub()
-        var uploaded = [String]()
-        var failed   = [String]()
-        stub.requestValidation = { request in
-            let parameters = self.requestParameters(request)[configuration.schemaName] as! [[String: AnyObject]]
-            let identifiers = parameters.map { $0["#UUID"] as! String }
-            uploaded = identifiers.enumerate().filter { $0.index % 2 == 0 }.map { $0.element }
-            failed   = identifiers.enumerate().filter { $0.index % 2 == 1 }.map { $0.element }
-        }
-        let data = self.dataResponse(configuration: configuration) { index in return index % 2 == 0 }
-        stub.completionResponse = (data, nil, nil)
-        Uploader(configuration: configuration, session: stub).uploadAllStoredEvents { result in
-            XCTAssertEqual(result.hashValue, Result.Success.hashValue)
-            let events = Event.events(configuration: configuration)!.array
-            XCTAssertEqual(events.count, 2)
-            events.forEach{ event in
-                XCTAssertFalse(uploaded.contains(event.id))
-                XCTAssertTrue(failed.contains(event.id))
-            }
-        }
-    }
-    
-    private func dataResponse(configuration configuration: Configuration, condition: Int -> Bool) -> NSData {
-        let events = Event.events(configuration: configuration)?.array ?? []
+    private func dataResponse(configuration configuration: Configuration, events: [Event], condition: Int -> Bool) -> NSData {
         let results: [[String: Bool]] = events.enumerate().map { index, _ in
             return ["success": condition(index)]
         }
