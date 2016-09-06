@@ -44,11 +44,11 @@ public final class TreasureData {
         self.defaultInstance?.addEvent(userInfo: userInfo)
     }
     
-    public func uploadEvents(completion: UploadingCompletion? = nil) {
-        Uploader(configuration: self.configuration).uploadEvents(completion: completion)
+    public func uploadAllStoredEvents(completion: UploadingCompletion? = nil) {
+        Uploader(configuration: self.configuration).uploadAllStoredEvents(completion: completion)
     }
-    public static func uploadEvents(completion: UploadingCompletion? = nil) {
-        self.defaultInstance?.uploadEvents(completion)
+    public static func uploadAllStoredEvents(completion: UploadingCompletion? = nil) {
+        self.defaultInstance?.uploadAllStoredEvents(completion)
     }
     
     public func startSession() {

@@ -21,7 +21,7 @@ internal struct Uploader {
         self.session       = session
     }
     
-    func uploadEvents(completion completion: TreasureData.UploadingCompletion?) {
+    func uploadAllStoredEvents(completion completion: TreasureData.UploadingCompletion?) {
         guard let events = Event.events(configuration: self.configuration)?.array else {
             completion?(.DatabaseUnavailable)
             return

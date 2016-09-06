@@ -28,7 +28,7 @@ final class UploaderTests: XCTestCase {
             table: "TABLE",
             inMemoryIdentifier: "inMemoryIdentifier")
         let stub = NSURLSessionStub()
-        Uploader(configuration: configuration, session: stub).uploadEvents { result in
+        Uploader(configuration: configuration, session: stub).uploadAllStoredEvents { result in
             XCTAssertEqual(result.hashValue, Result.NoEventToUpload.hashValue)
         }
     }
@@ -69,7 +69,7 @@ final class UploaderTests: XCTestCase {
         }
         let data = self.dataResponse(configuration: configuration) { _ in return true }
         stub.completionResponse = (data, nil, nil)
-        Uploader(configuration: configuration, session: stub).uploadEvents { result in
+        Uploader(configuration: configuration, session: stub).uploadAllStoredEvents { result in
         }
     }
 
@@ -87,7 +87,7 @@ final class UploaderTests: XCTestCase {
         let stub = NSURLSessionStub()
         let data = self.dataResponse(configuration: configuration) { _ in return true }
         stub.completionResponse = (data, nil, nil)
-        Uploader(configuration: configuration, session: stub).uploadEvents { result in
+        Uploader(configuration: configuration, session: stub).uploadAllStoredEvents { result in
             XCTAssertEqual(result.hashValue, Result.Success.hashValue)
             let events = Event.events(configuration: configuration)!.array
             XCTAssertTrue(events.isEmpty)
@@ -116,7 +116,7 @@ final class UploaderTests: XCTestCase {
         }
         let data = self.dataResponse(configuration: configuration) { index in return index % 2 == 0 }
         stub.completionResponse = (data, nil, nil)
-        Uploader(configuration: configuration, session: stub).uploadEvents { result in
+        Uploader(configuration: configuration, session: stub).uploadAllStoredEvents { result in
             XCTAssertEqual(result.hashValue, Result.Success.hashValue)
             let events = Event.events(configuration: configuration)!.array
             XCTAssertEqual(events.count, 2)
