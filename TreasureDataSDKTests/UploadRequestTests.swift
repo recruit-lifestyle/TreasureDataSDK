@@ -1,0 +1,84 @@
+//
+//  UploadRequestTests.swift
+//  TreasureDataSDK
+//
+//  Created by Yasuda Hayato on 2016/09/06.
+//  Copyright © 2016年 Recruit Lifestyle Co., Ltd. All rights reserved.
+//
+
+import XCTest
+@testable import TreasureDataSDK
+
+final class UploadRequestTests: XCTestCase {
+    override func setUp() {
+        super.setUp()
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+    
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+    
+    func testRequest() {
+        let configuration = Configuration(endpoint: "http://test.com",
+                                          key: "KEY",
+                                          database: "DATABASE",
+                                          table: "TABLE",
+                                          inMemoryIdentifier: "inMemoryIdentifier",
+                                          shouldAppendDeviceIdentifier: true,
+                                          shouldAppendModelInformation: true,
+                                          shouldAppendSeverSideTimestamp: true)
+        
+        
+        let treasureData = TreasureData(configuration: configuration)
+        treasureData.startSession()
+        
+        let deviceStub = UIDeviceStub()
+        Device.device = deviceStub
+        
+        let event1 = Event().appendInformation(treasureData).appendUserInfo(["name": "user1"])
+        let event2 = Event().appendInformation(treasureData).appendUserInfo(["name": "user2"])
+        
+        guard let request = UploadRequest(configuration: configuration, events: [event1, event2]).request else {
+            XCTFail("Fail to create UploadReqeust.")
+            return
+        }
+        
+        let expectedURL = NSURL(string: configuration.endpoint)!.URLByAppendingPathComponent("ios/v3/event")
+        XCTAssertEqual(request.URL!, expectedURL)
+        
+        let headers = request.allHTTPHeaderFields!
+        XCTAssertEqual(headers["Content-Type"], "application/json")
+        XCTAssertEqual(headers["X-TD-Data-Type"], "k")
+        XCTAssertEqual(headers["X-TD-Write-Key"], configuration.key)
+        
+        XCTAssertEqual(request.HTTPMethod, "POST")
+        
+        do {
+            let parameters = try NSJSONSerialization.JSONObjectWithData(request.HTTPBody!, options: NSJSONReadingOptions()) as! [String: AnyObject]
+            
+            let schemeName = parameters.keys.first!
+            XCTAssertEqual(schemeName, configuration.schemaName)
+            
+            let events = parameters[schemeName] as! [[String: AnyObject]]
+            XCTAssertEqual(events.count, 2)
+            
+            let event = events.first!
+            
+            XCTAssertTrue(event["#SSUT"] as! Bool)
+            XCTAssertNotNil(event["#UUID"])
+            XCTAssertNotNil(event["timestamp"])
+            
+            XCTAssertEqual(event["td_model"] as? String, deviceStub.deviceModel)
+            XCTAssertEqual(event["td_os_type"] as? String, deviceStub.systemName)
+            XCTAssertEqual(event["td_os_ver"] as? String, deviceStub.systemVersion)
+            XCTAssertEqual(event["td_uuid"] as? String, deviceStub.identifierForVendor?.UUIDString)
+            XCTAssertFalse((event["td_session_id"] as? String)!.isEmpty)
+            
+            XCTAssertEqual(event["name"] as? String, "user1")
+        } catch {
+            XCTFail("Fail to parse http body.")
+        }
+    }
+}

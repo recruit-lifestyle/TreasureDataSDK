@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A470B3E1D7E742300E91EFF /* UploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A470B3D1D7E742300E91EFF /* UploadRequest.swift */; };
+		6A470B401D7E80A900E91EFF /* UploadRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A470B3F1D7E80A900E91EFF /* UploadRequestTests.swift */; };
 		BF0ACC7C1CCB85A700C70F4E /* UIDeviceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */; };
 		BF0ACC801CCB8E4700C70F4E /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */; };
 		BF0ACC821CCB930100C70F4E /* TreasureDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6A470B3D1D7E742300E91EFF /* UploadRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRequest.swift; sourceTree = "<group>"; };
+		6A470B3F1D7E80A900E91EFF /* UploadRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRequestTests.swift; sourceTree = "<group>"; };
 		BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceStub.swift; sourceTree = "<group>"; };
 		BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasureDataTests.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 				BF6538511CABD1C1002CFF55 /* Event.swift */,
 				BF9AD0971CBB8DF600E38434 /* Device.swift */,
 				BF5FF2F51CCC8821000361CC /* Uploader.swift */,
+				6A470B3D1D7E742300E91EFF /* UploadRequest.swift */,
 			);
 			path = TreasureDataSDK;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 				BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */,
 				BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */,
 				BFE4C4141CCCD2AE00FA6BE2 /* UploaderTests.swift */,
+				6A470B3F1D7E80A900E91EFF /* UploadRequestTests.swift */,
 			);
 			path = TreasureDataSDKTests;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 				BF5729E31CCB6F250086F9B4 /* UIDevice+DeviceModel.swift in Sources */,
 				BF29CE681CB243C5003DE779 /* String+PathComponent.swift in Sources */,
 				BF9AD0981CBB8DF600E38434 /* Device.swift in Sources */,
+				6A470B3E1D7E742300E91EFF /* UploadRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +354,7 @@
 				BF6538431CABC4C6002CFF55 /* TreasureDataSDKTests.swift in Sources */,
 				BF0ACC801CCB8E4700C70F4E /* EventTests.swift in Sources */,
 				BF5729E11CCB6B480086F9B4 /* DeviceTests.swift in Sources */,
+				6A470B401D7E80A900E91EFF /* UploadRequestTests.swift in Sources */,
 				BFE4C40E1CCCCE7500FA6BE2 /* NSURLSessionStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

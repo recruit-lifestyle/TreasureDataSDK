@@ -14,5 +14,6 @@ public enum Result {
     case NetworkError
     case SystemError
     case DatabaseUnavailable
+    case BuildingRequestError
     case Unknown
 }

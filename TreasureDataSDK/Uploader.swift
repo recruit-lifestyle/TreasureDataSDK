@@ -8,12 +8,13 @@
 
 import Foundation
 
+internal typealias JSONType = [String: AnyObject]
+
 private let defaultSession = NSURLSession.sharedSession()
 
 internal struct Uploader {
     private let configuration: Configuration
     private let session: NSURLSession
-    private typealias JSONType = [String: AnyObject]
     
     init(configuration: Configuration, session: NSURLSession = defaultSession) {
         self.configuration = configuration
@@ -21,55 +22,21 @@ internal struct Uploader {
     }
     
     func uploadEvents(completion completion: TreasureData.UploadingCompletion?) {
-        guard let events = Event.events(configuration: self.configuration) else {
+        guard let events = Event.events(configuration: self.configuration)?.array else {
             completion?(.DatabaseUnavailable)
             return
         }
+        
         guard events.count > 0 else {
             completion?(.NoEventToUpload)
             return
         }
-        let URL = NSURL(string: configuration.endpoint)!.URLByAppendingPathComponent("ios/v3/event")
-        let request = NSMutableURLRequest(URL: URL)
-        let headers: [String: String] = [
-            "Content-Type": "application/json",
-            "X-TD-Data-Type": "k",
-            "X-TD-Write-Key": configuration.key,
-        ]
-        headers.forEach { field, value in
-            request.addValue(value, forHTTPHeaderField: field)
+        
+        guard let request = UploadRequest(configuration: configuration, events: events).request else {
+            completion?(.BuildingRequestError)
+            return
         }
-        // parameters validation is not needed for clients
-        let parameters: JSONType = [
-            configuration.schemaName: events.map { event -> JSONType in
-                var parameters: JSONType = [
-                    "#UUID": event.id,
-                    "#SSUT": configuration.shouldAppendSeverSideTimestamp,
-                    "timestamp": event.timestamp,
-                    "td_model": event.deviceModel,
-                    "td_os_type": event.systemName,
-                    "td_os_ver": event.systemVersion,
-                    "td_session_id": event.sessionIdentifier,
-                    "td_uuid": event.deviceIdentifier,
-                ]
-                event.userInfo.forEach { keyValue in
-                    let key   = keyValue.key
-                    let value = keyValue.value
-                    parameters[key] = value
-                }
-                return parameters
-            }
-        ]
-        request.HTTPMethod = "POST"
-        do {
-            let options = NSJSONWritingOptions()
-            let data = try NSJSONSerialization.dataWithJSONObject(parameters, options: options)
-            request.HTTPBody = data
-        } catch let error {
-            if configuration.debug {
-                print(error)
-            }
-        }
+        
         let task = self.session.dataTaskWithRequest(request) { data, response, error in
             let response = response as? NSHTTPURLResponse
             let result = self.handleCompletion(
