@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 internal typealias JSONType = [String: AnyObject]
 

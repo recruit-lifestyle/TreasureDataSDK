@@ -25,7 +25,7 @@ class UploadingDiscriminatorTests: XCTestCase {
         uploadingDiscriminator.increaseThreshold()
         XCTAssertFalse(uploadingDiscriminator.shouldUpload())
         
-        // Threshold: 5, Number of new events while failure: 1
+        // Threshold: 5, Number of new events: 1
         for _ in 0..<2 {
             uploadingDiscriminator.increaseThreshold()
         }

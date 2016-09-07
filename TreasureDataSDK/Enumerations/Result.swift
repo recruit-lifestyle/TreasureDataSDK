@@ -15,6 +15,5 @@ public enum Result {
     case SystemError
     case DatabaseUnavailable
     case BuildingRequestError
-    case FileStorageOrAddressSpaceExhaustedError
     case Unknown
 }

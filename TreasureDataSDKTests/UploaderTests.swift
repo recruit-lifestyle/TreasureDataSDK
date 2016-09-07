@@ -101,8 +101,8 @@ final class UploaderTests: XCTestCase {
         events.forEach { $0.save(configuration) }
         
         let stub = NSURLSessionStub()
-        let dataForSuccess = self.dataResponse(configuration: configuration, events: events) { _ in return true }
-        stub.completionResponse = (dataForSuccess, nil, nil)
+        let data = self.dataResponse(configuration: configuration, events: events) { _ in return true }
+        stub.completionResponse = (data, nil, nil)
         Uploader(configuration: configuration, session: stub).uploadAllStoredEvents { result in
             XCTAssertEqual(result.hashValue, Result.Success.hashValue)
             let storedEvents = Event.events(configuration: configuration)!.array
