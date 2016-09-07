@@ -50,15 +50,40 @@ final class UploaderTests: XCTestCase {
         let event = Event().appendInformation(instance)
 
         let stub = NSURLSessionStub()
-        let data = self.dataResponse(configuration: configuration, events: [event]) { index in return false }
         let dummyError = NSError(domain: "", code: 0, userInfo: nil)
-        
-        stub.completionResponse = (data, nil, dummyError)
+        stub.completionResponse = (nil, nil, dummyError)
         
         Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event) { result in
             XCTAssertNotEqual(result.hashValue, Result.Success.hashValue)
             let storedEvent = Event.events(configuration: configuration)!.array.first
             XCTAssertEqual(storedEvent?.id, event.id)
+        }
+    }
+    
+    func testUploadSomeStoredEvents() {
+        let configuration = Configuration(
+            key: "KEY",
+            database: "DATABASE",
+            table: "TABLE",
+            inMemoryIdentifier: "inMemoryIdentifier",
+            numberOfEventsEachRetryUploading: 2)
+        let instance = TreasureData(configuration: configuration)
+        let event1 = Event().appendInformation(instance)
+        let event2 = Event().appendInformation(instance)
+        let event3 = Event().appendInformation(instance)
+        let events = [event1, event2, event3]
+        
+        events.forEach { $0.save(configuration) }
+        
+        let stub = NSURLSessionStub()
+        let uploaded = [event1, event2]
+        let data = self.dataResponse(configuration: configuration, events: uploaded) { _ in return true }
+        stub.completionResponse = (data, nil, nil)
+        
+        Uploader(configuration: configuration, session: stub).uploadStoredEventsWith(limit: configuration.numberOfEventsEachRetryUploading) { _ in
+            let storedEvents = Event.events(configuration: configuration)?.array
+            let storedEvent = storedEvents?.first
+            uploaded.forEach { XCTAssertFalse(storedEvent!.isEqual($0)) }
         }
     }
     
@@ -73,18 +98,9 @@ final class UploaderTests: XCTestCase {
         let event2 = Event().appendInformation(instance)
         let events = [event1, event2]
         
+        events.forEach { $0.save(configuration) }
+        
         let stub = NSURLSessionStub()
-        
-        // For Saving events to realm
-        let dataForFailure = self.dataResponse(configuration: configuration, events: events) { _ in return false }
-        let dummyError = NSError(domain: "", code: 0, userInfo: nil)
-        stub.completionResponse = (dataForFailure, nil, dummyError)
-        Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event1)
-        Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event2)
-        let storedEvents = Event.events(configuration: configuration)?.array
-        XCTAssertEqual(storedEvents?.count, 2)
-        
-        
         let dataForSuccess = self.dataResponse(configuration: configuration, events: events) { _ in return true }
         stub.completionResponse = (dataForSuccess, nil, nil)
         Uploader(configuration: configuration, session: stub).uploadAllStoredEvents { result in

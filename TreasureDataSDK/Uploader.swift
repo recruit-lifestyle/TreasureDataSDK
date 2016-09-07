@@ -25,27 +25,56 @@ internal struct Uploader {
     func uploadEventAndStoreIfFailed(event event: Event, completion: TreasureData.UploadingCompletion? = nil) {
         self.uploadEvents(events: [event]) { result, _ in
             if result != .Success {
-                var shouldDeleteRealmFiles = false
                 // Store events to realm that failed to be uploaded.
+                event.save(self.configuration)
+            }
+            
+            completion?(result)
+        }
+    }
+    
+    func uploadStoredEventsWith(limit limit: Int, completion: TreasureData.UploadingCompletion? = nil) {
+        guard let events = Event.events(configuration: self.configuration) else {
+            completion?(.DatabaseUnavailable)
+            return
+        }
+        
+        guard events.count > 0 else {
+            completion?(.NoEventToUpload)
+            return
+        }
+        
+        let sortedEvents = events.sorted("timestamp")
+        let numberOfUploadingEvent = min(events.count, limit)
+        
+        var targetEvents = [Event]()
+        for i in 0..<numberOfUploadingEvent {
+            targetEvents.append(sortedEvents[i])
+        }
+        
+        self.uploadEvents(events: targetEvents) { result, responseJson in
+            guard let sortedEvents = Event.events(configuration: self.configuration)?.sorted("timestamp") else {
+                completion?(.DatabaseUnavailable)
+                return
+            }
+            
+            let uploadedEvents = responseJson.map { $0["success"] ?? false }.enumerate().flatMap { index, value in
+                return value && index < numberOfUploadingEvent ? sortedEvents[index] : nil
+            }
+            
+            if uploadedEvents.count > 0 {
+                // Delete events that succeeded to be uploaded.
                 autoreleasepool {
                     let realm = self.configuration.realm
                     do {
                         try realm?.write{
-                            realm?.add(event)
+                            realm?.delete(uploadedEvents)
                         }
-                    } catch RealmSwift.Error.AddressSpaceExhausted {
-                        shouldDeleteRealmFiles = true
                     } catch let error {
                         if self.configuration.debug {
                             print(error)
                         }
                     }
-                }
-                
-                if shouldDeleteRealmFiles {
-                    RealmFileHandler().deleteAllRealmFiles(self.configuration)
-                    completion?(.FileStorageOrAddressSpaceExhaustedError)
-                    return
                 }
             }
             
@@ -60,7 +89,7 @@ internal struct Uploader {
         }
 
         self.uploadEvents(events: events) { result, responseJson in
-            guard let events = Event.events(configuration: self.configuration)?.array else {
+            guard let events = Event.events(configuration: self.configuration) else {
                 completion?(.DatabaseUnavailable)
                 return
             }

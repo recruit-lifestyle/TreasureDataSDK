@@ -21,6 +21,7 @@ public struct Configuration {
     public let shouldAppendDeviceIdentifier: Bool
     public let shouldAppendModelInformation: Bool
     public let shouldAppendSeverSideTimestamp: Bool
+    public let numberOfEventsEachRetryUploading: Int
     
     /**
      - parameters:
@@ -48,7 +49,9 @@ public struct Configuration {
         schemaVersion:      UInt64  = 1,
         shouldAppendDeviceIdentifier:   Bool = false,
         shouldAppendModelInformation:   Bool = false,
-        shouldAppendSeverSideTimestamp: Bool = false) {
+        shouldAppendSeverSideTimestamp: Bool = false,
+        numberOfEventsEachRetryUploading: Int = 5) {
+        
         self.debug = debug
         self.endpoint = endpoint
         self.key      = key
@@ -71,6 +74,7 @@ public struct Configuration {
         self.shouldAppendDeviceIdentifier   = shouldAppendDeviceIdentifier
         self.shouldAppendModelInformation   = shouldAppendModelInformation
         self.shouldAppendSeverSideTimestamp = shouldAppendSeverSideTimestamp
+        self.numberOfEventsEachRetryUploading = numberOfEventsEachRetryUploading
     }
     
     internal static func defaultFileURL() -> NSURL {

@@ -60,6 +60,28 @@ internal final class Event: RealmSwift.Object {
         return event
     }
     
+    func save(configuration: Configuration) {
+        var shouldDeleteRealmFiles = false
+        autoreleasepool {
+            let realm = configuration.realm
+            do {
+                try realm?.write{
+                    realm?.add(self)
+                }
+            } catch RealmSwift.Error.AddressSpaceExhausted {
+                shouldDeleteRealmFiles = true
+            } catch let error {
+                if configuration.debug {
+                    print(error)
+                }
+            }
+        }
+        
+        if shouldDeleteRealmFiles {
+            RealmFileHandler().deleteAllRealmFiles(configuration)
+        }
+    }
+    
     static func events(configuration configuration: Configuration) -> RealmSwift.Results<Event>? {
         let predicate = NSPredicate(format: "database = %@ AND table = %@", configuration.database, configuration.table)
         return configuration.realm?.objects(Event).filter(predicate)

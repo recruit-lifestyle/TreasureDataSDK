@@ -17,6 +17,8 @@ public final class TreasureData {
     internal static var defaultInstance: TreasureData?
     internal var sessionIdentifier = ""
     
+    private var uploadingDiscriminator = UploadingDiscriminator()
+    
     public let configuration: Configuration
     /// Configure default instance.
     public static func configure(configuration: Configuration) {
@@ -29,7 +31,25 @@ public final class TreasureData {
     
     public func addEvent(userInfo userInfo: UserInfo = [:]) {
         let event = Event().appendInformation(self).appendUserInfo(userInfo)
-        Uploader(configuration: self.configuration).uploadEventAndStoreIfFailed(event: event)
+        
+        uploadingDiscriminator.incrementNumberOfEventsSinceLastSuccess()
+
+        if !self.uploadingDiscriminator.shouldUpload() {
+            event.save(self.configuration)
+            return
+        }
+        
+        let uploader = Uploader(configuration: self.configuration)
+        uploader.uploadEventAndStoreIfFailed(event: event) { result in
+            if result == .Success {
+                self.uploadingDiscriminator.reset()
+            } else {
+                self.uploadingDiscriminator.increaseThreshold()
+            }
+        }
+        
+        // Retry uploading events that stored local strage
+        uploader.uploadStoredEventsWith(limit: self.configuration.numberOfEventsEachRetryUploading)
     }
     
     public static func addEvent(userInfo userInfo: UserInfo = [:]) {
