@@ -28,7 +28,8 @@ final class UploadRequestTests: XCTestCase {
                                           inMemoryIdentifier: "inMemoryIdentifier",
                                           shouldAppendDeviceIdentifier: true,
                                           shouldAppendModelInformation: true,
-                                          shouldAppendSeverSideTimestamp: true)
+                                          shouldAppendSeverSideTimestamp: true,
+                                          shouldAppendNumberOfStoredEvents: true)
         
         
         let treasureData = TreasureData(configuration: configuration)
@@ -38,7 +39,10 @@ final class UploadRequestTests: XCTestCase {
         Device.device = deviceStub
         
         let event1 = Event().appendInformation(treasureData).appendUserInfo(["name": "user1"])
+        event1.save(configuration)
+        
         let event2 = Event().appendInformation(treasureData).appendUserInfo(["name": "user2"])
+        event2.save(configuration)
         
         guard let request = UploadRequest(configuration: configuration, events: [event1, event2]).request else {
             XCTFail("Fail to create UploadReqeust.")
@@ -64,7 +68,7 @@ final class UploadRequestTests: XCTestCase {
             let events = parameters[schemeName] as! [[String: AnyObject]]
             XCTAssertEqual(events.count, 2)
             
-            let event = events.first!
+            let event = events[1]
             
             XCTAssertTrue(event["#SSUT"] as! Bool)
             XCTAssertNotNil(event["#UUID"])
@@ -76,7 +80,8 @@ final class UploadRequestTests: XCTestCase {
             XCTAssertEqual(event["td_uuid"] as? String, deviceStub.identifierForVendor?.UUIDString)
             XCTAssertFalse((event["td_session_id"] as? String)!.isEmpty)
             
-            XCTAssertEqual(event["name"] as? String, "user1")
+            XCTAssertEqual(event["name"] as? String, "user2")
+            XCTAssertEqual(event["num_of_stored_events"] as? Int, 1)
         } catch {
             XCTFail("Fail to parse http body.")
         }

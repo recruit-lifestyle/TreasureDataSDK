@@ -21,6 +21,7 @@ public struct Configuration {
     public let shouldAppendDeviceIdentifier: Bool
     public let shouldAppendModelInformation: Bool
     public let shouldAppendSeverSideTimestamp: Bool
+    public let shouldAppendNumberOfStoredEvents: Bool
     public let numberOfEventsEachRetryUploading: Int
     
     /**
@@ -50,6 +51,7 @@ public struct Configuration {
         shouldAppendDeviceIdentifier:   Bool = false,
         shouldAppendModelInformation:   Bool = false,
         shouldAppendSeverSideTimestamp: Bool = false,
+        shouldAppendNumberOfStoredEvents: Bool = false,
         numberOfEventsEachRetryUploading: Int = 5) {
         
         self.debug = debug
@@ -74,6 +76,7 @@ public struct Configuration {
         self.shouldAppendDeviceIdentifier   = shouldAppendDeviceIdentifier
         self.shouldAppendModelInformation   = shouldAppendModelInformation
         self.shouldAppendSeverSideTimestamp = shouldAppendSeverSideTimestamp
+        self.shouldAppendNumberOfStoredEvents = shouldAppendNumberOfStoredEvents
         self.numberOfEventsEachRetryUploading = numberOfEventsEachRetryUploading
     }
     

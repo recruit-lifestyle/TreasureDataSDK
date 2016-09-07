@@ -22,6 +22,9 @@ internal final class Event: RealmSwift.Object {
     // user extra information
     let userInfo = List<KeyValue>()
     
+    // This property exists for investigatio how many events are stored local storage.
+    private(set) dynamic var numberOfStoredEvents = -1
+    
     override static func primaryKey() -> String? {
         return "id"
     }
@@ -45,6 +48,11 @@ internal final class Event: RealmSwift.Object {
             event.deviceModel   = device.deviceModel
         }
         event.sessionIdentifier = instance.sessionIdentifier
+        
+        if instance.configuration.shouldAppendNumberOfStoredEvents {
+            event.numberOfStoredEvents = Event.events(configuration: instance.configuration)?.count ?? -1
+        }
+        
         return event
     }
     

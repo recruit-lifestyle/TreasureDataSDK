@@ -76,6 +76,7 @@ internal struct UploadRequest {
                     "td_os_ver": event.systemVersion,
                     "td_session_id": event.sessionIdentifier,
                     "td_uuid": event.deviceIdentifier,
+                    "num_of_stored_events": event.numberOfStoredEvents
                 ]
                 event.userInfo.forEach { keyValue in
                     let key   = keyValue.key
