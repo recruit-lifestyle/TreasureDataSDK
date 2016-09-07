@@ -88,7 +88,7 @@ final class ViewController: UIViewController {
     }
     
     func uploadEvents(_: UIButton) {
-        TreasureData.uploadEvents { result in
+        TreasureData.uploadAllStoredEvents { result in
             print(result)
         }
     }
