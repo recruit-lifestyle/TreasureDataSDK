@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6A470B3E1D7E742300E91EFF /* UploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A470B3D1D7E742300E91EFF /* UploadRequest.swift */; };
 		6A470B401D7E80A900E91EFF /* UploadRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A470B3F1D7E80A900E91EFF /* UploadRequestTests.swift */; };
+		6A5D01901D7FA199007B3F64 /* RealmFileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D018F1D7FA199007B3F64 /* RealmFileHandler.swift */; };
 		BF0ACC7C1CCB85A700C70F4E /* UIDeviceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */; };
 		BF0ACC801CCB8E4700C70F4E /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */; };
 		BF0ACC821CCB930100C70F4E /* TreasureDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		6A470B3D1D7E742300E91EFF /* UploadRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRequest.swift; sourceTree = "<group>"; };
 		6A470B3F1D7E80A900E91EFF /* UploadRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRequestTests.swift; sourceTree = "<group>"; };
+		6A5D018F1D7FA199007B3F64 /* RealmFileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmFileHandler.swift; path = Helpers/RealmFileHandler.swift; sourceTree = "<group>"; };
 		BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceStub.swift; sourceTree = "<group>"; };
 		BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasureDataTests.swift; sourceTree = "<group>"; };
@@ -109,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A5D018E1D7FA12C007B3F64 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6A5D018F1D7FA199007B3F64 /* RealmFileHandler.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		BF0ACC731CCB809B00C70F4E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +191,7 @@
 		BF6538351CABC4C5002CFF55 /* TreasureDataSDK */ = {
 			isa = PBXGroup;
 			children = (
+				6A5D018E1D7FA12C007B3F64 /* Helpers */,
 				BF5729DD1CCB5FBE0086F9B4 /* Enumerations */,
 				BF29CE661CB24377003DE779 /* Extensions */,
 				BF6538361CABC4C5002CFF55 /* TreasureDataSDK.h */,
@@ -330,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A5D01901D7FA199007B3F64 /* RealmFileHandler.swift in Sources */,
 				BF6538501CABD1B6002CFF55 /* Configuration.swift in Sources */,
 				BF5FF3381CCCA005000361CC /* Result.swift in Sources */,
 				BF5FF2F61CCC8821000361CC /* Uploader.swift in Sources */,

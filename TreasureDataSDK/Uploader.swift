@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 internal typealias JSONType = [String: AnyObject]
 
@@ -22,20 +23,32 @@ internal struct Uploader {
     }
     
     func uploadEventAndStoreIfFailed(event event: Event, completion: TreasureData.UploadingCompletion? = nil) {
-        self.uploadEvents(events: [event]) { result, a, failedToUploadEvent in
-            if failedToUploadEvent.count > 0 {
+        self.uploadEvents(events: [event]) { result, _, failedToUploadEvents in
+            if failedToUploadEvents.count > 0 {
+                var shouldDeleteRealmFiles = false
                 // Store events to realm that failed to be uploaded.
-                let realm = self.configuration.realm
-                do {
-                    try realm?.write{
-                        realm?.add(failedToUploadEvent)
-                    }
-                } catch let error {
-                    if self.configuration.debug {
-                        print(error)
+                autoreleasepool {
+                    let realm = self.configuration.realm
+                    do {
+                        try realm?.write{
+                            realm?.add(failedToUploadEvents)
+                        }
+                    } catch RealmSwift.Error.AddressSpaceExhausted {
+                        shouldDeleteRealmFiles = true
+                    } catch let error {
+                        if self.configuration.debug {
+                            print(error)
+                        }
                     }
                 }
+                
+                if shouldDeleteRealmFiles {
+                    RealmFileHandler().deleteAllRealmFiles(self.configuration)
+                    completion?(.FileStorageOrAddressSpaceExhaustedError)
+                    return
+                }
             }
+            
             completion?(result)
         }
     }
@@ -49,14 +62,16 @@ internal struct Uploader {
         self.uploadEvents(events: events) { result, uploadedEvents, _ in
             if uploadedEvents.count > 0 {
                 // Delete events that succeeded to be uploaded.
-                let realm = self.configuration.realm
-                do {
-                    try realm?.write{
-                        realm?.delete(uploadedEvents)
-                    }
-                } catch let error {
-                    if self.configuration.debug {
-                        print(error)
+                autoreleasepool {
+                    let realm = self.configuration.realm
+                    do {
+                        try realm?.write{
+                            realm?.delete(uploadedEvents)
+                        }
+                    } catch let error {
+                        if self.configuration.debug {
+                            print(error)
+                        }
                     }
                 }
             }
