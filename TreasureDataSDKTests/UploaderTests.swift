@@ -51,11 +51,12 @@ final class UploaderTests: XCTestCase {
 
         let stub = NSURLSessionStub()
         let data = self.dataResponse(configuration: configuration, events: [event]) { index in return false }
-        stub.completionResponse = (data, nil, nil)
+        let dummyError = NSError(domain: "", code: 0, userInfo: nil)
+        
+        stub.completionResponse = (data, nil, dummyError)
         
         Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event) { result in
-            XCTAssertEqual(result.hashValue, Result.Success.hashValue)
-            
+            XCTAssertNotEqual(result.hashValue, Result.Success.hashValue)
             let storedEvent = Event.events(configuration: configuration)!.array.first
             XCTAssertEqual(storedEvent?.id, event.id)
         }
@@ -76,7 +77,8 @@ final class UploaderTests: XCTestCase {
         
         // For Saving events to realm
         let dataForFailure = self.dataResponse(configuration: configuration, events: events) { _ in return false }
-        stub.completionResponse = (dataForFailure, nil, nil)
+        let dummyError = NSError(domain: "", code: 0, userInfo: nil)
+        stub.completionResponse = (dataForFailure, nil, dummyError)
         Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event1)
         Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event2)
         let storedEvents = Event.events(configuration: configuration)?.array
