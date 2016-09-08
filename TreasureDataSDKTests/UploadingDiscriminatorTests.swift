@@ -11,9 +11,25 @@ import XCTest
 
 class UploadingDiscriminatorTests: XCTestCase {
     
-    func testShouldUpload() {
+    func testItShouldUploadBeforeStartingRestriction() {
         var uploadingDiscriminator = UploadingDiscriminator()
         
+        // Threshold: 1, Number of new events: 0
+        XCTAssertTrue(uploadingDiscriminator.shouldUpload())
+        
+        // Threshold: 1, Number of new events: 1
+        uploadingDiscriminator.incrementNumberOfEventsSinceLastSuccess()
+        XCTAssertTrue(uploadingDiscriminator.shouldUpload())
+        
+        // Threshold: 2, Number of new events: 1
+        uploadingDiscriminator.increaseThreshold()
+        XCTAssertTrue(uploadingDiscriminator.shouldUpload())
+    }
+    
+    func testShouldUploadWhenRestricted() {
+        var uploadingDiscriminator = UploadingDiscriminator()
+        uploadingDiscriminator.startRestriction()
+
         // Threshold: 1, Number of new events: 0
         XCTAssertFalse(uploadingDiscriminator.shouldUpload())
         
@@ -25,20 +41,29 @@ class UploadingDiscriminatorTests: XCTestCase {
         uploadingDiscriminator.increaseThreshold()
         XCTAssertFalse(uploadingDiscriminator.shouldUpload())
         
-        // Threshold: 5, Number of new events: 1
-        for _ in 0..<2 {
+        // Threshold: 2, Number of new events: 2
+        uploadingDiscriminator.incrementNumberOfEventsSinceLastSuccess()
+        XCTAssertTrue(uploadingDiscriminator.shouldUpload())
+        
+        // Threshold: 13, Number of new events: 3 ~ 12
+        for _ in 0..<4 {
             uploadingDiscriminator.increaseThreshold()
         }
-        
-        for _ in 0..<4 {
+        for _ in 0..<10 {
             uploadingDiscriminator.incrementNumberOfEventsSinceLastSuccess()
+            XCTAssertFalse(uploadingDiscriminator.shouldUpload())
         }
+        
+        // Threshold: 13, Number of new events: 13
+        uploadingDiscriminator.incrementNumberOfEventsSinceLastSuccess()
         XCTAssertTrue(uploadingDiscriminator.shouldUpload())
     }
     
     func testReset() {
         var uploadingDiscriminator = UploadingDiscriminator()
-
+        uploadingDiscriminator.startRestriction()
+        
+        
         // Threshold: 32951280099, Number of new events: 4
         for _ in 0..<50 {
             uploadingDiscriminator.increaseThreshold()
@@ -50,9 +75,6 @@ class UploadingDiscriminatorTests: XCTestCase {
         
         // Threshold: 1, Number of new events: 0
         uploadingDiscriminator.reset()
-        
-        // Threshold: 1, Number of new events: 1
-        uploadingDiscriminator.incrementNumberOfEventsSinceLastSuccess()
         XCTAssertTrue(uploadingDiscriminator.shouldUpload())
     }
 }

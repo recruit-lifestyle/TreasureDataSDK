@@ -44,12 +44,19 @@ public final class TreasureData {
             if result == .Success {
                 self.uploadingDiscriminator.reset()
             } else {
+                self.uploadingDiscriminator.startRestriction()
                 self.uploadingDiscriminator.increaseThreshold()
             }
         }
         
         // Retry uploading events that stored local strage
-        uploader.uploadStoredEventsWith(limit: self.configuration.numberOfEventsEachRetryUploading)
+        if self.uploadingDiscriminator.isRetrying {
+            return
+        }
+        self.uploadingDiscriminator.startRetrying()
+        uploader.uploadStoredEventsWith(limit: self.configuration.numberOfEventsEachRetryUploading) { _ in
+            self.uploadingDiscriminator.finishRetrying()
+        }
     }
     
     public static func addEvent(userInfo userInfo: UserInfo = [:]) {

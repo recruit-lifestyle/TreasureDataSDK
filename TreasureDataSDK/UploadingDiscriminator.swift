@@ -9,10 +9,16 @@
 import Foundation
 
 internal struct UploadingDiscriminator {
+    private var isRestricted = false
+    private(set) var isRetrying = false
+    
     private var nextRetryThreshold = 1
     private var numberOfEventsSinceLastSuccess = 0
     
     func shouldUpload() -> Bool {
+        guard isRestricted else {
+            return true
+        }
         return self.nextRetryThreshold == self.numberOfEventsSinceLastSuccess
     }
     
@@ -21,6 +27,7 @@ internal struct UploadingDiscriminator {
     }
     
     mutating func reset() {
+        self.isRestricted = false
         self.nextRetryThreshold = 1
         self.numberOfEventsSinceLastSuccess = 0
     }
