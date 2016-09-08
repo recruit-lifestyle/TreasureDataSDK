@@ -37,6 +37,10 @@ internal struct UploadRequest {
         return "POST"
     }
     
+    private var timeoutInterval: NSTimeInterval {
+        return 15
+    }
+    
     var request: NSURLRequest? {
         guard let URL = URL else {
             return nil
@@ -60,6 +64,7 @@ internal struct UploadRequest {
         }
         
         request.HTTPMethod = HTTPMethod
+        request.timeoutInterval = timeoutInterval
 
         return request
     }

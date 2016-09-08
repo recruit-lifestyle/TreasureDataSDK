@@ -58,6 +58,7 @@ final class UploadRequestTests: XCTestCase {
         XCTAssertEqual(headers["X-TD-Write-Key"], configuration.key)
         
         XCTAssertEqual(request.HTTPMethod, "POST")
+        XCTAssertEqual(request.timeoutInterval, 15)
         
         do {
             let parameters = try NSJSONSerialization.JSONObjectWithData(request.HTTPBody!, options: NSJSONReadingOptions()) as! [String: AnyObject]
