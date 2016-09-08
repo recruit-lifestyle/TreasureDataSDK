@@ -35,6 +35,18 @@ internal struct UploadingDiscriminator {
     mutating func increaseThreshold() {
         self.nextRetryThreshold = FibonacciNumberCalculator().nextLargerFibonacciNumber(self.nextRetryThreshold)
     }
+    
+    mutating func startRetrying() {
+        self.isRetrying = true
+    }
+    
+    mutating func finishRetrying() {
+        self.isRetrying = false
+    }
+    
+    mutating func startRestriction() {
+        self.isRestricted = true
+    }
 }
 
 private struct FibonacciNumberCalculator {
