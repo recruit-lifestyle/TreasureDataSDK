@@ -20,6 +20,9 @@ public final class TreasureData {
     private var uploadingDiscriminator = UploadingDiscriminator()
     
     public let configuration: Configuration
+    
+    private let queue = dispatch_queue_create("jp.co.recruit-lifestyle.TreasureDataSDK.UploadingEventQueue", DISPATCH_QUEUE_SERIAL)
+    
     /// Configure default instance.
     public static func configure(configuration: Configuration) {
         self.defaultInstance = TreasureData(configuration: configuration)
@@ -30,32 +33,34 @@ public final class TreasureData {
     }
     
     public func addEvent(userInfo userInfo: UserInfo = [:]) {
-        let event = Event().appendInformation(self).appendUserInfo(userInfo)
-        
-        uploadingDiscriminator.incrementNumberOfEventsSinceLastSuccess()
-
-        if !self.uploadingDiscriminator.shouldUpload() {
-            event.save(self.configuration)
-            return
-        }
-        
-        let uploader = Uploader(configuration: self.configuration)
-        uploader.uploadEventAndStoreIfFailed(event: event) { result in
-            if result == .Success {
-                self.uploadingDiscriminator.reset()
-            } else {
-                self.uploadingDiscriminator.startRestriction()
-                self.uploadingDiscriminator.increaseThreshold()
+        dispatch_async(queue) {
+            let event = Event().appendInformation(self).appendUserInfo(userInfo)
+            
+            self.uploadingDiscriminator.incrementNumberOfEventsSinceLastSuccess()
+            
+            if !self.uploadingDiscriminator.shouldUpload() {
+                event.save(self.configuration)
+                return
             }
-        }
-        
-        // Retry uploading events that stored local strage
-        if self.uploadingDiscriminator.isRetrying {
-            return
-        }
-        self.uploadingDiscriminator.startRetrying()
-        uploader.uploadStoredEventsWith(limit: self.configuration.numberOfEventsEachRetryUploading) { _ in
-            self.uploadingDiscriminator.finishRetrying()
+            
+            let uploader = Uploader(configuration: self.configuration)
+            uploader.uploadEventAndStoreIfFailed(event: event) { result in
+                if result == .Success {
+                    self.uploadingDiscriminator.reset()
+                } else {
+                    self.uploadingDiscriminator.startRestriction()
+                    self.uploadingDiscriminator.increaseThreshold()
+                }
+            }
+            
+            // Retry uploading events that stored local strage
+            if self.uploadingDiscriminator.isRetrying {
+                return
+            }
+            self.uploadingDiscriminator.startRetrying()
+            uploader.uploadStoredEventsWith(limit: self.configuration.numberOfEventsEachRetryUploading) { _ in
+                self.uploadingDiscriminator.finishRetrying()
+            }
         }
     }
     
