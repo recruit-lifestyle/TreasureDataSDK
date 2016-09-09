@@ -43,13 +43,9 @@ internal struct Uploader {
             return
         }
         
-        let sortedEvents = events.sorted("timestamp")
-        let numberOfUploadingEvent = min(events.count, limit)
         
-        var targetEvents = [Event]()
-        for i in 0..<numberOfUploadingEvent {
-            targetEvents.append(sortedEvents[i])
-        }
+        let numberOfUploadingEvents = min(events.count, limit)
+        let targetEvents = Array(events.sorted("timestamp").prefix(numberOfUploadingEvents))
         
         self.uploadEvents(events: targetEvents) { result, responseJson in
             guard let sortedEvents = Event.events(configuration: self.configuration)?.sorted("timestamp") else {
@@ -58,7 +54,7 @@ internal struct Uploader {
             }
             
             let uploadedEvents = responseJson.map { $0["success"] ?? false }.enumerate().flatMap { index, value in
-                return value && index < numberOfUploadingEvent ? sortedEvents[index] : nil
+                return value && index < numberOfUploadingEvents ? sortedEvents[index] : nil
             }
             
             if uploadedEvents.count > 0 {
