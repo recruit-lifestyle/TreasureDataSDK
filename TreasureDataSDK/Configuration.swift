@@ -52,7 +52,7 @@ public struct Configuration {
         shouldAppendModelInformation:   Bool = false,
         shouldAppendSeverSideTimestamp: Bool = false,
         shouldAppendNumberOfStoredEvents: Bool = false,
-        numberOfEventsEachRetryUploading: Int = 5) {
+        numberOfEventsEachRetryUploading: Int = 25) {
         
         self.debug = debug
         self.endpoint = endpoint
