@@ -33,7 +33,7 @@ final class UploaderTests: XCTestCase {
         let data = self.dataResponse(configuration: configuration, events: [event]) { _ in return true }
         stub.completionResponse = (data, nil, nil)
         
-        Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event) { result in
+        Uploader(configuration: configuration, session: stub).uploadEventOrStoreIfFailed(event: event) { result in
             XCTAssertEqual(result.hashValue, Result.Success.hashValue)
             let storedEvents = Event.events(configuration: configuration)!.array
             storedEvents.forEach { XCTAssertNotEqual($0.id, event.id) }
@@ -53,7 +53,7 @@ final class UploaderTests: XCTestCase {
         let dummyError = NSError(domain: "", code: 0, userInfo: nil)
         stub.completionResponse = (nil, nil, dummyError)
         
-        Uploader(configuration: configuration, session: stub).uploadEventAndStoreIfFailed(event: event) { result in
+        Uploader(configuration: configuration, session: stub).uploadEventOrStoreIfFailed(event: event) { result in
             XCTAssertNotEqual(result.hashValue, Result.Success.hashValue)
             let storedEvent = Event.events(configuration: configuration)!.array.first
             XCTAssertEqual(storedEvent?.id, event.id)

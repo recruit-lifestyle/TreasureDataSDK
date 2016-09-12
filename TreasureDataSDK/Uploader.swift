@@ -21,7 +21,7 @@ internal struct Uploader {
         self.session       = session
     }
     
-    func uploadEventAndStoreIfFailed(event event: Event, completion: TreasureData.UploadingCompletion? = nil) {
+    func uploadEventOrStoreIfFailed(event event: Event, completion: TreasureData.UploadingCompletion? = nil) {
         self.uploadEvents(events: [event]) { result, _ in
             if result != .Success {
                 // Store events to realm that failed to be uploaded.

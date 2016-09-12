@@ -44,7 +44,7 @@ public final class TreasureData {
             }
             
             let uploader = Uploader(configuration: self.configuration)
-            uploader.uploadEventAndStoreIfFailed(event: event) { result in
+            uploader.uploadEventOrStoreIfFailed(event: event) { result in
                 if result == .Success {
                     self.uploadingDiscriminator.reset()
                 } else {
