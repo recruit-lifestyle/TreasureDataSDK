@@ -77,6 +77,7 @@ internal struct Uploader {
         }
     }
     
+    @available(*, deprecated, message="This method will be removed, besauce it is not necessary any more.")
     func uploadAllStoredEvents(completion completion: TreasureData.UploadingCompletion? = nil) {
         guard let events = Event.events(configuration: self.configuration)?.array else {
             completion?(.DatabaseUnavailable)
