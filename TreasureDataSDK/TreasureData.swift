@@ -68,10 +68,12 @@ public final class TreasureData {
         self.defaultInstance?.addEvent(userInfo: userInfo)
     }
     
+    @available(*, deprecated, message="This method will be removed, besauce it is not necessary any more.")
     public func uploadAllStoredEvents(completion: UploadingCompletion? = nil) {
         Uploader(configuration: self.configuration).uploadAllStoredEvents(completion: completion)
     }
     
+    @available(*, deprecated, message="This method will be removed, besauce it is not necessary any more.")
     public static func uploadAllStoredEvents(completion: UploadingCompletion? = nil) {
         self.defaultInstance?.uploadAllStoredEvents(completion)
     }

@@ -12,7 +12,6 @@ import SnapKit
 
 final class ViewController: UIViewController {
     private let addEventButton     = UIButton(type: .System)
-    private let uploadEventsButton = UIButton(type: .System)
     private let startSessionButton = UIButton(type: .System)
     private let endSessionButton   = UIButton(type: .System)
     
@@ -39,7 +38,6 @@ final class ViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
         
         self.view.addSubview(self.addEventButton)
-        self.view.addSubview(self.uploadEventsButton)
         self.view.addSubview(self.startSessionButton)
         self.view.addSubview(self.endSessionButton)
         
@@ -49,12 +47,7 @@ final class ViewController: UIViewController {
             make.height.equalTo(self.view).multipliedBy(0.5)
             make.width.equalTo(self.view).multipliedBy(0.5)
         }
-        self.uploadEventsButton.snp_makeConstraints { make in
-            make.top.equalTo(self.view)
-            make.trailing.equalTo(self.view)
-            make.height.equalTo(self.view).multipliedBy(0.5)
-            make.width.equalTo(self.view).multipliedBy(0.5)
-        }
+
         self.startSessionButton.snp_makeConstraints { make in
             make.bottom.equalTo(self.view)
             make.leading.equalTo(self.view)
@@ -69,12 +62,10 @@ final class ViewController: UIViewController {
         }
         
         self.addEventButton.setTitle("Add Event", forState: .Normal)
-        self.uploadEventsButton.setTitle("Upload Event", forState: .Normal)
         self.startSessionButton.setTitle("Star Session", forState: .Normal)
         self.endSessionButton.setTitle("End Session", forState: .Normal)
         
         self.addEventButton.addTarget(self, action: #selector(addEvent(_:)), forControlEvents: .TouchUpInside)
-        self.uploadEventsButton.addTarget(self, action: #selector(uploadEvents(_:)), forControlEvents: .TouchUpInside)
         self.startSessionButton.addTarget(self, action: #selector(startSession(_:)), forControlEvents: .TouchUpInside)
         self.endSessionButton.addTarget(self, action: #selector(endSession(_:)), forControlEvents: .TouchUpInside)
     }
@@ -85,12 +76,6 @@ final class ViewController: UIViewController {
             "age": "27",
             ]
         TreasureData.addEvent(userInfo: userInfo)
-    }
-    
-    func uploadEvents(_: UIButton) {
-        TreasureData.uploadAllStoredEvents { result in
-            print(result)
-        }
     }
     
     func startSession(_: UIButton) {
