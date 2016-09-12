@@ -62,7 +62,7 @@ final class ViewController: UIViewController {
         }
         
         self.addEventButton.setTitle("Add Event", forState: .Normal)
-        self.startSessionButton.setTitle("Star Session", forState: .Normal)
+        self.startSessionButton.setTitle("Start Session", forState: .Normal)
         self.endSessionButton.setTitle("End Session", forState: .Normal)
         
         self.addEventButton.addTarget(self, action: #selector(addEvent(_:)), forControlEvents: .TouchUpInside)
