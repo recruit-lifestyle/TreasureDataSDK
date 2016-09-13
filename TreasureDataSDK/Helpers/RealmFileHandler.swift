@@ -11,7 +11,7 @@ import Foundation
 internal struct RealmFileHandler {
     func deleteAllRealmFiles(configuration: Configuration) {
         
-        let realmFileURLs = self.getRealmFileURLs(configuration)
+        let realmFileURLs = self.retrieveRealmFileURLs(configuration)
         
         let manager = NSFileManager.defaultManager()
         for fileURL in realmFileURLs {
@@ -25,7 +25,7 @@ internal struct RealmFileHandler {
         }
     }
     
-    private func getRealmFileURLs(configuration: Configuration) -> [NSURL] {
+    private func retrieveRealmFileURLs(configuration: Configuration) -> [NSURL] {
         guard let mainFileURL = configuration.fileURL,
             let mainFileName = mainFileURL.lastPathComponent,
             let directoryURL = mainFileURL.URLByDeletingLastPathComponent,
