@@ -32,18 +32,19 @@ public final class TreasureData {
         self.configuration = configuration
     }
     
+    
+    /**
+     This method is asynchronously executed, considering the influence onto the Application at the Realm I/O.
+     
+     Queueing not `uploadEventAndStoreIfFailed` and `uploadStoredEventsWith` methods (both including Realm I/O),
+     but the whole process of `addEvent` method.
+     
+     The reason is, comparing following procedures:
+        1. queueing -> uploading decision (regarding uploadingDiscriminator) -> uploading execution
+        2. uploading decision (regarding uploadingDiscriminator) -> queueing -> uploading execution
+     procedure 1 is preferable to make the uploading decision just before the uploading execution.
+     */
     public func addEvent(userInfo userInfo: UserInfo = [:]) {
-        /**
-         This method is asynchronously executed, considering the influence onto the Application at the Realm I/O.
-         
-         Queueing not `uploadEventAndStoreIfFailed` and `uploadStoredEventsWith` methods (both including Realm I/O),
-         but the whole process of `addEvent` method.
-         
-         The reason is, comparing following procedures:
-         1, queueing -> uploading decision (regarding uploadingDiscriminator) -> uploading execution
-         2, uploading decision -> queueing -> uploading execution,
-         procedure 1 is preferable to make the uploading decision just before the uploading execution.
-         */
         dispatch_async(queue) {
             let event = Event().appendInformation(self).appendUserInfo(userInfo)
             
