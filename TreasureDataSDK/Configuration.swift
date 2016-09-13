@@ -37,6 +37,8 @@ public struct Configuration {
         - shouldAppendDeviceIdentifier: [OPTIONAL] Automatically appended device identifier if it is true. The default is false.
         - shouldAppendModelInformation: [OPTIONAL] Automatically appended device information if it is true. The default is false.
         - shouldAppendSeverSideTimestamp: [OPTIONAL] Request append server side timestamp if it is true. The default is false.
+        - shouldAppendNumberOfStoredEvents: [OPTIONAL] Automatically appended number of stored events if it is true. The default is false.
+        - numberOfEventsEachRetryUploading: [OPTIONAL] The number of events that are retried uploading at a time if stored events exist.
      */
     public init(
         debug: Bool = false,
