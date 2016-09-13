@@ -53,8 +53,10 @@ internal final class Event: RealmSwift.Object {
         }
         event.sessionIdentifier = instance.sessionIdentifier
         
-        if instance.configuration.shouldAppendNumberOfStoredEvents {
-            event.numberOfStoredEvents = Event.events(configuration: instance.configuration)?.count ?? -1
+
+        if instance.configuration.shouldAppendNumberOfStoredEvents,
+            let numberOfStoredEvents = Event.events(configuration: instance.configuration)?.count {
+            event.numberOfStoredEvents = numberOfStoredEvents
         }
         
         return event
