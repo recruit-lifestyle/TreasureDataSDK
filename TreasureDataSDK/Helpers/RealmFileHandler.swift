@@ -10,17 +10,8 @@ import Foundation
 
 internal struct RealmFileHandler {
     func deleteAllRealmFiles(configuration: Configuration) {
-        guard let realmFile = configuration.fileURL else {
-            return
-        }
         
-        let realmFileURLs = [
-            realmFile,
-            realmFile.URLByAppendingPathExtension("lock"),
-            realmFile.URLByAppendingPathExtension("log_a"),
-            realmFile.URLByAppendingPathExtension("log_b"),
-            realmFile.URLByAppendingPathExtension("note")
-        ]
+        let realmFileURLs = self.getRealmFileURLs(configuration)
         
         let manager = NSFileManager.defaultManager()
         for fileURL in realmFileURLs {
@@ -31,6 +22,27 @@ internal struct RealmFileHandler {
                     print(error)
                 }
             }
+        }
+    }
+    
+    private func getRealmFileURLs(configuration: Configuration) -> [NSURL] {
+        guard let mainFileURL = configuration.fileURL,
+            let mainFileName = mainFileURL.lastPathComponent,
+            let directoryURL = mainFileURL.URLByDeletingLastPathComponent,
+            let directoryURLString = directoryURL.path else {
+                return []
+        }
+
+        do {
+            return try NSFileManager.defaultManager()
+                                .contentsOfDirectoryAtPath(directoryURLString)
+                                .filter { $0.containsString(mainFileName) }
+                                .map { directoryURL.URLByAppendingPathComponent($0) }
+        } catch {
+            if configuration.debug {
+                print(error)
+            }
+            return []
         }
     }
 }
