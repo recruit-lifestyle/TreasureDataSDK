@@ -22,6 +22,13 @@ internal final class Event: RealmSwift.Object {
     // user extra information
     let userInfo = List<KeyValue>()
     
+    /* 
+     TODO:
+     This property exists to investigate how many events are stored in local storage.
+     After checking, it will be deleted.
+     */
+    private(set) dynamic var numberOfStoredEvents = -1
+    
     override static func primaryKey() -> String? {
         return "id"
     }
@@ -45,6 +52,13 @@ internal final class Event: RealmSwift.Object {
             event.deviceModel   = device.deviceModel
         }
         event.sessionIdentifier = instance.sessionIdentifier
+        
+
+        if instance.configuration.shouldAppendNumberOfStoredEvents,
+            let numberOfStoredEvents = Event.events(configuration: instance.configuration)?.count {
+            event.numberOfStoredEvents = numberOfStoredEvents
+        }
+        
         return event
     }
     
@@ -58,6 +72,35 @@ internal final class Event: RealmSwift.Object {
             event.userInfo.append(keyValue)
         }
         return event
+    }
+    
+    func save(configuration: Configuration) {
+        var shouldDeleteRealmFiles = false
+        autoreleasepool {
+            let realm = configuration.realm
+            do {
+                try realm?.write{
+                    realm?.add(self)
+                }
+            } catch RealmSwift.Error.AddressSpaceExhausted {
+                shouldDeleteRealmFiles = true
+            } catch let error {
+                if configuration.debug {
+                    print(error)
+                }
+            }
+        }
+        
+        /* 
+         SDK deletes all logs when it fails to store in local storage due to running out of disk or memory space.
+         This is not to have any influence onto the application because of the stored logs.
+         
+         At this time Realm files that are related this SDK (including auxiliary files) are deleted,
+         because even if SDK calls Realm#deleteAll, Realm file will maintain its size on disk.
+         */
+        if shouldDeleteRealmFiles {
+            RealmFileHandler().deleteAllRealmFiles(configuration)
+        }
     }
     
     static func events(configuration configuration: Configuration) -> RealmSwift.Results<Event>? {

@@ -17,7 +17,12 @@ public final class TreasureData {
     internal static var defaultInstance: TreasureData?
     internal var sessionIdentifier = ""
     
+    private var uploadingDiscriminator = UploadingDiscriminator()
+    
     public let configuration: Configuration
+    
+    private let queue = dispatch_queue_create("jp.co.recruit-lifestyle.TreasureDataSDK.UploadingEventQueue", DISPATCH_QUEUE_SERIAL)
+    
     /// Configure default instance.
     public static func configure(configuration: Configuration) {
         self.defaultInstance = TreasureData(configuration: configuration)
@@ -27,28 +32,62 @@ public final class TreasureData {
         self.configuration = configuration
     }
     
+    
+    /**
+     This method is asynchronously executed, considering the influence onto the Application at the Realm I/O.
+     
+     Queueing not `uploadEventAndStoreIfFailed` and `uploadStoredEventsWith` methods (both including Realm I/O),
+     but the whole process of `addEvent` method.
+     
+     The reason is, comparing following procedures:
+        1. queueing -> uploading decision (regarding uploadingDiscriminator) -> uploading execution
+        2. uploading decision (regarding uploadingDiscriminator) -> queueing -> uploading execution
+     procedure 1 is preferable to make the uploading decision just before the uploading execution.
+     */
     public func addEvent(userInfo userInfo: UserInfo = [:]) {
-        guard let realm = self.configuration.realm else { return }
-        let event = Event().appendInformation(self).appendUserInfo(userInfo)
-        do {
-            try realm.write {
-                realm.add(event)
+        dispatch_async(queue) {
+            let event = Event().appendInformation(self).appendUserInfo(userInfo)
+            
+            self.uploadingDiscriminator.incrementNumberOfEventsSinceLastSuccess()
+            
+            if !self.uploadingDiscriminator.shouldUpload() {
+                event.save(self.configuration)
+                return
             }
-        } catch let error {
-            if self.configuration.debug {
-                print(error)
+            
+            let uploader = Uploader(configuration: self.configuration)
+            uploader.uploadEventOrStoreIfFailed(event: event) { result in
+                if result == .Success {
+                    self.uploadingDiscriminator.reset()
+                } else {
+                    self.uploadingDiscriminator.startRestriction()
+                    self.uploadingDiscriminator.increaseThreshold()
+                }
+            }
+            
+            // Retry uploading events that stored local strage
+            if self.uploadingDiscriminator.isRetrying {
+                return
+            }
+            self.uploadingDiscriminator.startRetrying()
+            uploader.uploadStoredEventsWith(limit: self.configuration.numberOfEventsEachRetryUploading) { _ in
+                self.uploadingDiscriminator.finishRetrying()
             }
         }
     }
+    
     public static func addEvent(userInfo userInfo: UserInfo = [:]) {
         self.defaultInstance?.addEvent(userInfo: userInfo)
     }
     
-    public func uploadEvents(completion: UploadingCompletion? = nil) {
-        Uploader(configuration: self.configuration).uploadEvents(completion: completion)
+    @available(*, deprecated, message="This method will be removed, besauce it is not necessary any more.")
+    public func uploadAllStoredEvents(completion: UploadingCompletion? = nil) {
+        Uploader(configuration: self.configuration).uploadAllStoredEvents(completion: completion)
     }
-    public static func uploadEvents(completion: UploadingCompletion? = nil) {
-        self.defaultInstance?.uploadEvents(completion)
+    
+    @available(*, deprecated, message="This method will be removed, besauce it is not necessary any more.")
+    public static func uploadAllStoredEvents(completion: UploadingCompletion? = nil) {
+        self.defaultInstance?.uploadAllStoredEvents(completion)
     }
     
     public func startSession() {

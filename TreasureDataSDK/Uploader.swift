@@ -8,110 +8,157 @@
 
 import Foundation
 
+internal typealias JSONType = [String: AnyObject]
+
 private let defaultSession = NSURLSession.sharedSession()
 
 internal struct Uploader {
     private let configuration: Configuration
     private let session: NSURLSession
-    private typealias JSONType = [String: AnyObject]
     
     init(configuration: Configuration, session: NSURLSession = defaultSession) {
         self.configuration = configuration
         self.session       = session
     }
     
-    func uploadEvents(completion completion: TreasureData.UploadingCompletion?) {
+    func uploadEventOrStoreIfFailed(event event: Event, completion: TreasureData.UploadingCompletion? = nil) {
+        self.uploadEvents(events: [event]) { result, _ in
+            if result != .Success {
+                // Store events to realm that failed to be uploaded.
+                event.save(self.configuration)
+            }
+            
+            completion?(result)
+        }
+    }
+    
+    func uploadStoredEventsWith(limit limit: Int, completion: TreasureData.UploadingCompletion? = nil) {
         guard let events = Event.events(configuration: self.configuration) else {
             completion?(.DatabaseUnavailable)
             return
         }
+        
         guard events.count > 0 else {
             completion?(.NoEventToUpload)
             return
         }
-        let URL = NSURL(string: configuration.endpoint)!.URLByAppendingPathComponent("ios/v3/event")
-        let request = NSMutableURLRequest(URL: URL)
-        let headers: [String: String] = [
-            "Content-Type": "application/json",
-            "X-TD-Data-Type": "k",
-            "X-TD-Write-Key": configuration.key,
-        ]
-        headers.forEach { field, value in
-            request.addValue(value, forHTTPHeaderField: field)
-        }
-        // parameters validation is not needed for clients
-        let parameters: JSONType = [
-            configuration.schemaName: events.map { event -> JSONType in
-                var parameters: JSONType = [
-                    "#UUID": event.id,
-                    "#SSUT": configuration.shouldAppendSeverSideTimestamp,
-                    "timestamp": event.timestamp,
-                    "td_model": event.deviceModel,
-                    "td_os_type": event.systemName,
-                    "td_os_ver": event.systemVersion,
-                    "td_session_id": event.sessionIdentifier,
-                    "td_uuid": event.deviceIdentifier,
-                ]
-                event.userInfo.forEach { keyValue in
-                    let key   = keyValue.key
-                    let value = keyValue.value
-                    parameters[key] = value
+        
+        
+        let numberOfUploadingEvents = min(events.count, limit)
+        let targetEvents = Array(events.sorted("timestamp").prefix(numberOfUploadingEvents))
+        
+        self.uploadEvents(events: targetEvents) { result, responseJson in
+            guard let sortedEvents = Event.events(configuration: self.configuration)?.sorted("timestamp") else {
+                completion?(.DatabaseUnavailable)
+                return
+            }
+            
+            let uploadedEvents = responseJson.map { $0["success"] ?? false }.enumerate().flatMap { index, value in
+                return value && index < numberOfUploadingEvents ? sortedEvents[index] : nil
+            }
+            
+            if uploadedEvents.count > 0 {
+                // Delete events that succeeded to be uploaded.
+                autoreleasepool {
+                    let realm = self.configuration.realm
+                    do {
+                        try realm?.write{
+                            realm?.delete(uploadedEvents)
+                        }
+                    } catch let error {
+                        if self.configuration.debug {
+                            print(error)
+                        }
+                    }
                 }
-                return parameters
             }
-        ]
-        request.HTTPMethod = "POST"
-        do {
-            let options = NSJSONWritingOptions()
-            let data = try NSJSONSerialization.dataWithJSONObject(parameters, options: options)
-            request.HTTPBody = data
-        } catch let error {
-            if configuration.debug {
-                print(error)
-            }
-        }
-        let task = self.session.dataTaskWithRequest(request) { data, response, error in
-            let response = response as? NSHTTPURLResponse
-            let result = self.handleCompletion(
-                configuration: self.configuration,
-                data: data,
-                response: response,
-                error: error)
+            
             completion?(result)
         }
-        task.resume()
     }
     
-    private func handleCompletion(
-        configuration configuration: Configuration,
-        data: NSData?,
-        response: NSHTTPURLResponse?,
-        error: NSError?) -> Result {
-        if let _ = error { return response?.statusCode == 0 ? .NetworkError : .SystemError }
-        guard let data = data else { return .Unknown }
-        let json: JSONType
-        do {
-            let options = NSJSONReadingOptions()
-            guard let serialized = try NSJSONSerialization.JSONObjectWithData(data, options: options) as? JSONType else { return .Unknown }
-            json = serialized
-        } catch { return .Unknown }
-        // clean events
-        let events = Event.events(configuration: self.configuration)!
-        let count = events.count
-        guard let parameters = json[configuration.schemaName] as? [[String: Bool]] else { return .Unknown }
-        let uploaded = parameters.map { $0["success"] ?? false }.enumerate().flatMap { index, value in
-            return value && index < count ? events[index] : nil
+    @available(*, deprecated, message="This method will be removed, besauce it is not necessary any more.")
+    func uploadAllStoredEvents(completion completion: TreasureData.UploadingCompletion? = nil) {
+        guard let events = Event.events(configuration: self.configuration)?.array else {
+            completion?(.DatabaseUnavailable)
+            return
         }
-        let realm = configuration.realm
-        do {
-            try realm?.write{
-                realm?.delete(uploaded)
+
+        self.uploadEvents(events: events) { result, responseJson in
+            guard let events = Event.events(configuration: self.configuration) else {
+                completion?(.DatabaseUnavailable)
+                return
             }
-        } catch let error {
-            if configuration.debug {
-                print(error)
+            
+            let uploadedEvents = responseJson.map { $0["success"] ?? false }.enumerate().flatMap { index, value in
+                return value && index < events.count ? events[index] : nil
             }
+            
+            if uploadedEvents.count > 0 {
+                // Delete events that succeeded to be uploaded.
+                autoreleasepool {
+                    let realm = self.configuration.realm
+                    do {
+                        try realm?.write{
+                            realm?.delete(uploadedEvents)
+                        }
+                    } catch let error {
+                        if self.configuration.debug {
+                            print(error)
+                        }
+                    }
+                }
+            }
+            
+            completion?(result)
         }
-        return .Success
+    }
+    
+    private func uploadEvents(events events: [Event], completion: (result: Result, responseJson: [[String: Bool]]) -> Void) {
+        guard events.count > 0 else {
+            completion(result: .NoEventToUpload, responseJson: [])
+            return
+        }
+        
+        guard let request = UploadRequest(configuration: configuration, events: events).request else {
+            completion(result: .BuildingRequestError, responseJson: [])
+            return
+        }
+        
+        let task = self.session.dataTaskWithRequest(request) { data, response, error in
+            let response = response as? NSHTTPURLResponse
+            
+            if let _ = error {
+                let error: Result = (response?.statusCode == 0) ? .NetworkError : .SystemError
+                completion(result: error, responseJson: [])
+                return
+            }
+            
+            guard let data = data else {
+                completion(result: .Unknown, responseJson: [])
+                return
+            }
+            
+            let json: JSONType
+            do {
+                let options = NSJSONReadingOptions()
+                guard let serialized = try NSJSONSerialization.JSONObjectWithData(data, options: options) as? JSONType else {
+                    completion(result: .Unknown, responseJson: [])
+                    return
+                }
+                json = serialized
+            } catch {
+                completion(result: .Unknown, responseJson: [])
+                return
+            }
+            
+            guard let parameters = json[self.configuration.schemaName] as? [[String: Bool]] else {
+                completion(result: .Unknown, responseJson: [])
+                return
+            }
+
+            completion(result: .Success, responseJson: parameters)
+        }
+        task.resume()
     }
 }

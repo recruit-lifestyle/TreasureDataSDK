@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A470B3E1D7E742300E91EFF /* UploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A470B3D1D7E742300E91EFF /* UploadRequest.swift */; };
+		6A470B401D7E80A900E91EFF /* UploadRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A470B3F1D7E80A900E91EFF /* UploadRequestTests.swift */; };
+		6A5D01901D7FA199007B3F64 /* RealmFileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D018F1D7FA199007B3F64 /* RealmFileHandler.swift */; };
+		6A5D019A1D7FDCAF007B3F64 /* UploadingDiscriminator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D01991D7FDCAF007B3F64 /* UploadingDiscriminator.swift */; };
+		6A5D019D1D7FF7EA007B3F64 /* UploadingDiscriminatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D019C1D7FF7EA007B3F64 /* UploadingDiscriminatorTests.swift */; };
 		BF0ACC7C1CCB85A700C70F4E /* UIDeviceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */; };
 		BF0ACC801CCB8E4700C70F4E /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */; };
 		BF0ACC821CCB930100C70F4E /* TreasureDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */; };
@@ -58,6 +63,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6A470B3D1D7E742300E91EFF /* UploadRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRequest.swift; sourceTree = "<group>"; };
+		6A470B3F1D7E80A900E91EFF /* UploadRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRequestTests.swift; sourceTree = "<group>"; };
+		6A5D018F1D7FA199007B3F64 /* RealmFileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmFileHandler.swift; path = Helpers/RealmFileHandler.swift; sourceTree = "<group>"; };
+		6A5D01991D7FDCAF007B3F64 /* UploadingDiscriminator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadingDiscriminator.swift; sourceTree = "<group>"; };
+		6A5D019C1D7FF7EA007B3F64 /* UploadingDiscriminatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadingDiscriminatorTests.swift; sourceTree = "<group>"; };
 		BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceStub.swift; sourceTree = "<group>"; };
 		BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasureDataTests.swift; sourceTree = "<group>"; };
@@ -105,6 +115,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A5D018E1D7FA12C007B3F64 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6A5D018F1D7FA199007B3F64 /* RealmFileHandler.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		BF0ACC731CCB809B00C70F4E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +195,7 @@
 		BF6538351CABC4C5002CFF55 /* TreasureDataSDK */ = {
 			isa = PBXGroup;
 			children = (
+				6A5D018E1D7FA12C007B3F64 /* Helpers */,
 				BF5729DD1CCB5FBE0086F9B4 /* Enumerations */,
 				BF29CE661CB24377003DE779 /* Extensions */,
 				BF6538361CABC4C5002CFF55 /* TreasureDataSDK.h */,
@@ -186,6 +205,8 @@
 				BF6538511CABD1C1002CFF55 /* Event.swift */,
 				BF9AD0971CBB8DF600E38434 /* Device.swift */,
 				BF5FF2F51CCC8821000361CC /* Uploader.swift */,
+				6A5D01991D7FDCAF007B3F64 /* UploadingDiscriminator.swift */,
+				6A470B3D1D7E742300E91EFF /* UploadRequest.swift */,
 			);
 			path = TreasureDataSDK;
 			sourceTree = "<group>";
@@ -202,6 +223,8 @@
 				BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */,
 				BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */,
 				BFE4C4141CCCD2AE00FA6BE2 /* UploaderTests.swift */,
+				6A470B3F1D7E80A900E91EFF /* UploadRequestTests.swift */,
+				6A5D019C1D7FF7EA007B3F64 /* UploadingDiscriminatorTests.swift */,
 			);
 			path = TreasureDataSDKTests;
 			sourceTree = "<group>";
@@ -324,14 +347,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A5D01901D7FA199007B3F64 /* RealmFileHandler.swift in Sources */,
 				BF6538501CABD1B6002CFF55 /* Configuration.swift in Sources */,
 				BF5FF3381CCCA005000361CC /* Result.swift in Sources */,
 				BF5FF2F61CCC8821000361CC /* Uploader.swift in Sources */,
+				6A5D019A1D7FDCAF007B3F64 /* UploadingDiscriminator.swift in Sources */,
 				BF6538521CABD1C1002CFF55 /* Event.swift in Sources */,
 				BF65384E1CABD185002CFF55 /* TreasureData.swift in Sources */,
 				BF5729E31CCB6F250086F9B4 /* UIDevice+DeviceModel.swift in Sources */,
 				BF29CE681CB243C5003DE779 /* String+PathComponent.swift in Sources */,
 				BF9AD0981CBB8DF600E38434 /* Device.swift in Sources */,
+				6A470B3E1D7E742300E91EFF /* UploadRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,9 +370,11 @@
 				BF0ACC821CCB930100C70F4E /* TreasureDataTests.swift in Sources */,
 				BF5729EC1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift in Sources */,
 				BFE4C4151CCCD2AE00FA6BE2 /* UploaderTests.swift in Sources */,
+				6A5D019D1D7FF7EA007B3F64 /* UploadingDiscriminatorTests.swift in Sources */,
 				BF6538431CABC4C6002CFF55 /* TreasureDataSDKTests.swift in Sources */,
 				BF0ACC801CCB8E4700C70F4E /* EventTests.swift in Sources */,
 				BF5729E11CCB6B480086F9B4 /* DeviceTests.swift in Sources */,
+				6A470B401D7E80A900E91EFF /* UploadRequestTests.swift in Sources */,
 				BFE4C40E1CCCCE7500FA6BE2 /* NSURLSessionStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
