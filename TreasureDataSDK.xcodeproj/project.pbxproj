@@ -17,8 +17,6 @@
 		BF0ACC821CCB930100C70F4E /* TreasureDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */; };
 		BF29CE601CB224A6003DE779 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29CE5F1CB224A6003DE779 /* ConfigurationTests.swift */; };
 		BF29CE681CB243C5003DE779 /* String+PathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29CE671CB243C5003DE779 /* String+PathComponent.swift */; };
-		BF2ED47A1CCBC455009DD294 /* Realm.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538531CABD24E002CFF55 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BF2ED47B1CCBC455009DD294 /* RealmSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538541CABD24E002CFF55 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF5729E11CCB6B480086F9B4 /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729E01CCB6B480086F9B4 /* DeviceTests.swift */; };
 		BF5729E31CCB6F250086F9B4 /* UIDevice+DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729E21CCB6F250086F9B4 /* UIDevice+DeviceModel.swift */; };
 		BF5729EC1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729EB1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift */; };
@@ -46,21 +44,6 @@
 			remoteInfo = TreasureDataSDK;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		BF2ED4791CCBC3FB009DD294 /* Copy Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				BF2ED47A1CCBC455009DD294 /* Realm.framework in Copy Frameworks */,
-				BF2ED47B1CCBC455009DD294 /* RealmSwift.framework in Copy Frameworks */,
-			);
-			name = "Copy Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6A470B3D1D7E742300E91EFF /* UploadRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRequest.swift; sourceTree = "<group>"; };
@@ -260,7 +243,6 @@
 				BF65382F1CABC4C5002CFF55 /* Frameworks */,
 				BF6538301CABC4C5002CFF55 /* Headers */,
 				BF6538311CABC4C5002CFF55 /* Resources */,
-				BF2ED4791CCBC3FB009DD294 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
