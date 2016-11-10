@@ -34,6 +34,9 @@ public final class TreasureData {
     
     
     /**
+     Upload or save event and try to upload saved events in local strage.
+     Event will be saved into local strage(Realm) when it fails to upload event.
+     
      This method is asynchronously executed, considering the influence onto the Application at the Realm I/O.
      
      Queueing not `uploadEventAndStoreIfFailed` and `uploadStoredEventsWith` methods (both including Realm I/O),
@@ -78,6 +81,19 @@ public final class TreasureData {
     
     public static func addEvent(userInfo: UserInfo = [:]) {
         self.defaultInstance?.addEvent(userInfo: userInfo)
+    }
+    
+    /**
+     Just save event into local strage. (Not try to upload.)
+     This method is synchronously executed.
+     */
+    public func saveEvent(userInfo: UserInfo = [:]) {
+        let event = Event().appendInformation(self).appendUserInfo(userInfo)
+        event.save(self.configuration)
+    }
+    
+    public static func saveEvent(userInfo: UserInfo = [:]) {
+        self.defaultInstance?.saveEvent(userInfo: userInfo)
     }
     
     @available(*, deprecated, message: "This method will be removed, besauce it is not necessary any more.")
