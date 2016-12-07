@@ -2,7 +2,7 @@
 //  TreasureDataSDK.h
 //  TreasureDataSDK
 //
-//  Created by Yuki Nagai on 9/18/16.
+//  Created by Yuki Nagai on 3/30/16.
 //  Copyright © 2016 Recruit Lifestyle Co., Ltd. All rights reserved.
 //
 
