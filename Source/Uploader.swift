@@ -43,10 +43,10 @@ internal struct Uploader {
         
         
         let numberOfUploadingEvents = min(events.count, limit)
-        let targetEvents = Array(events.sorted(byProperty: "timestamp").prefix(numberOfUploadingEvents))
+        let targetEvents = Array(events.sorted(byKeyPath: #keyPath(Event.timestamp)).prefix(numberOfUploadingEvents))
         
         self.uploadEvents(events: targetEvents) { result, responseJson in
-            guard let sortedEvents = Event.events(configuration: self.configuration)?.sorted(byProperty: "timestamp") else {
+            guard let sortedEvents = Event.events(configuration: self.configuration)?.sorted(byKeyPath: #keyPath(Event.timestamp)) else {
                 completion?(.databaseUnavailable)
                 return
             }
