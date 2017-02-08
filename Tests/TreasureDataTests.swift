@@ -12,9 +12,8 @@ import XCTest
 final class TreasureDataTests: XCTestCase {
     override func setUp() {
         super.setUp()
-        
         let configuration = Configuration(
-            key: "KEY", database: "DATABASE", table: "TABLE", inMemoryIdentifier: "inMemoryIdentifier")
+            key: "KEY", database: "DATABASE", table: "TABLE", inMemoryIdentifier: name!)
         TreasureData.configure(configuration)
     }
     

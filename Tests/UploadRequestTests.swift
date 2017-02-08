@@ -25,7 +25,7 @@ final class UploadRequestTests: XCTestCase {
                                           key: "KEY",
                                           database: "DATABASE",
                                           table: "TABLE",
-                                          inMemoryIdentifier: "inMemoryIdentifier",
+                                          inMemoryIdentifier: name!,
                                           shouldAppendDeviceIdentifier: true,
                                           shouldAppendModelInformation: true,
                                           shouldAppendSeverSideTimestamp: true,
