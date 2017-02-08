@@ -82,7 +82,7 @@ internal final class Event: RealmSwift.Object {
                 try realm?.write{
                     realm?.add(self)
                 }
-            } catch RealmSwift.Error.addressSpaceExhausted {
+            } catch Realm.Error.addressSpaceExhausted {
                 shouldDeleteRealmFiles = true
             } catch let error {
                 if configuration.debug {

@@ -26,7 +26,7 @@ final class UploaderTests: XCTestCase {
             key: "KEY",
             database: "DATABASE",
             table: "TABLE",
-            inMemoryIdentifier: "inMemoryIdentifier")
+            inMemoryIdentifier: name!)
         let instance = TreasureData(configuration: configuration)
         let event = Event().appendInformation(instance)
         let stub = URLSessionStub()
@@ -45,7 +45,7 @@ final class UploaderTests: XCTestCase {
             key: "KEY",
             database: "DATABASE",
             table: "TABLE",
-            inMemoryIdentifier: "inMemoryIdentifier")
+            inMemoryIdentifier: name!)
         let instance = TreasureData(configuration: configuration)
         let event = Event().appendInformation(instance)
 
@@ -65,7 +65,7 @@ final class UploaderTests: XCTestCase {
             key: "KEY",
             database: "DATABASE",
             table: "TABLE",
-            inMemoryIdentifier: "inMemoryIdentifier",
+            inMemoryIdentifier: name!,
             numberOfEventsEachRetryUploading: 2)
         let instance = TreasureData(configuration: configuration)
         let event1 = Event().appendInformation(instance)
