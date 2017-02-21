@@ -44,15 +44,20 @@ internal struct Uploader {
         
         let numberOfUploadingEvents = min(events.count, limit)
         let targetEvents = Array(events.sorted(byKeyPath: #keyPath(Event.timestamp)).prefix(numberOfUploadingEvents))
+        let targetEventIDs = targetEvents.map { $0.id }
         
         self.uploadEvents(events: targetEvents) { result, responseJson in
-            guard let sortedEvents = Event.events(configuration: self.configuration)?.sorted(byKeyPath: #keyPath(Event.timestamp)) else {
+            guard let events = Event.events(configuration: self.configuration) else {
                 completion?(.databaseUnavailable)
                 return
             }
             
-            let uploadedEvents = responseJson.map { $0["success"] ?? false }.enumerated().flatMap { index, value in
-                return value && index < numberOfUploadingEvents ? sortedEvents[index] : nil
+            let uploadedEventIDs = responseJson.map { $0["success"] ?? false }.enumerated().flatMap { index, value in
+                 return value && index < numberOfUploadingEvents ? targetEventIDs[index] : nil
+            }
+
+            let uploadedEvents = events.filter { event in
+                uploadedEventIDs.contains(event.id)
             }
             
             if uploadedEvents.count > 0 {
