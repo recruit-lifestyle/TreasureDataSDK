@@ -42,8 +42,7 @@ internal struct Uploader {
         }
         
         
-        let numberOfUploadingEvents = min(events.count, limit)
-        let targetEvents = Array(events.sorted(byKeyPath: #keyPath(Event.timestamp)).prefix(numberOfUploadingEvents))
+        let targetEvents = Array(events.sorted(byKeyPath: #keyPath(Event.timestamp)).prefix(min(events.count, limit)))
         let targetEventIDs = targetEvents.map { $0.id }
         
         self.uploadEvents(events: targetEvents) { result, responseJson in
@@ -53,7 +52,7 @@ internal struct Uploader {
             }
             
             let uploadedEventIDs = responseJson.map { $0["success"] ?? false }.enumerated().flatMap { index, value in
-                 return value && index < numberOfUploadingEvents ? targetEventIDs[index] : nil
+                 return value && index < targetEventIDs.count ? targetEventIDs[index] : nil
             }
 
             let uploadedEvents = events.filter { event in
