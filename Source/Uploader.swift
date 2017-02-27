@@ -42,7 +42,7 @@ internal struct Uploader {
         }
         
         
-        let targetEvents = Array(events.sorted(byKeyPath: #keyPath(Event.timestamp)).prefix(min(events.count, limit)))
+        let targetEvents = Array(events.sorted(byKeyPath: #keyPath(Event.timestamp)).prefix(limit))
         let targetEventIDs = targetEvents.map { $0.id }
         
         self.uploadEvents(events: targetEvents) { result, responseJson in
