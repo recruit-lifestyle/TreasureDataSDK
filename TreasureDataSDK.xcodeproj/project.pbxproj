@@ -7,242 +7,260 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A470B3E1D7E742300E91EFF /* UploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A470B3D1D7E742300E91EFF /* UploadRequest.swift */; };
-		6A470B401D7E80A900E91EFF /* UploadRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A470B3F1D7E80A900E91EFF /* UploadRequestTests.swift */; };
-		6A5D01901D7FA199007B3F64 /* RealmFileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D018F1D7FA199007B3F64 /* RealmFileHandler.swift */; };
-		6A5D019A1D7FDCAF007B3F64 /* UploadingDiscriminator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D01991D7FDCAF007B3F64 /* UploadingDiscriminator.swift */; };
-		6A5D019D1D7FF7EA007B3F64 /* UploadingDiscriminatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D019C1D7FF7EA007B3F64 /* UploadingDiscriminatorTests.swift */; };
-		BF0ACC7C1CCB85A700C70F4E /* UIDeviceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */; };
-		BF0ACC801CCB8E4700C70F4E /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */; };
-		BF0ACC821CCB930100C70F4E /* TreasureDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */; };
-		BF29CE601CB224A6003DE779 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29CE5F1CB224A6003DE779 /* ConfigurationTests.swift */; };
-		BF29CE681CB243C5003DE779 /* String+PathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29CE671CB243C5003DE779 /* String+PathComponent.swift */; };
-		BF5729E11CCB6B480086F9B4 /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729E01CCB6B480086F9B4 /* DeviceTests.swift */; };
-		BF5729E31CCB6F250086F9B4 /* UIDevice+DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729E21CCB6F250086F9B4 /* UIDevice+DeviceModel.swift */; };
-		BF5729EC1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5729EB1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift */; };
-		BF5FF2F61CCC8821000361CC /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF2F51CCC8821000361CC /* Uploader.swift */; };
-		BF5FF3381CCCA005000361CC /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF3371CCCA005000361CC /* Result.swift */; };
-		BF6538371CABC4C5002CFF55 /* TreasureDataSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6538361CABC4C5002CFF55 /* TreasureDataSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF65383E1CABC4C6002CFF55 /* TreasureDataSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538331CABC4C5002CFF55 /* TreasureDataSDK.framework */; };
-		BF6538431CABC4C6002CFF55 /* TreasureDataSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6538421CABC4C6002CFF55 /* TreasureDataSDKTests.swift */; };
-		BF65384E1CABD185002CFF55 /* TreasureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65384D1CABD185002CFF55 /* TreasureData.swift */; };
-		BF6538501CABD1B6002CFF55 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65384F1CABD1B6002CFF55 /* Configuration.swift */; };
-		BF6538521CABD1C1002CFF55 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6538511CABD1C1002CFF55 /* Event.swift */; };
-		BF6538551CABD24E002CFF55 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538531CABD24E002CFF55 /* Realm.framework */; };
-		BF6538561CABD24E002CFF55 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6538541CABD24E002CFF55 /* RealmSwift.framework */; };
-		BF9AD0981CBB8DF600E38434 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9AD0971CBB8DF600E38434 /* Device.swift */; };
-		BFE4C40E1CCCCE7500FA6BE2 /* NSURLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4C40D1CCCCE7500FA6BE2 /* NSURLSessionStub.swift */; };
-		BFE4C4151CCCD2AE00FA6BE2 /* UploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4C4141CCCD2AE00FA6BE2 /* UploaderTests.swift */; };
+		BF2AF2261D8EC58B0046AF20 /* TreasureDataSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AF21C1D8EC58B0046AF20 /* TreasureDataSDK.framework */; };
+		BF2AF22D1D8EC58B0046AF20 /* TreasureDataSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2AF21F1D8EC58B0046AF20 /* TreasureDataSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF2AF2681D8EC7100046AF20 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2591D8EC7100046AF20 /* Configuration.swift */; };
+		BF2AF2691D8EC7100046AF20 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF25A1D8EC7100046AF20 /* Device.swift */; };
+		BF2AF26A1D8EC7100046AF20 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF25C1D8EC7100046AF20 /* Result.swift */; };
+		BF2AF26B1D8EC7100046AF20 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF25D1D8EC7100046AF20 /* Event.swift */; };
+		BF2AF26C1D8EC7100046AF20 /* String+PathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF25F1D8EC7100046AF20 /* String+PathComponent.swift */; };
+		BF2AF26D1D8EC7100046AF20 /* UIDevice+DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2601D8EC7100046AF20 /* UIDevice+DeviceModel.swift */; };
+		BF2AF26E1D8EC7100046AF20 /* RealmFileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2621D8EC7100046AF20 /* RealmFileHandler.swift */; };
+		BF2AF26F1D8EC7100046AF20 /* TreasureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2631D8EC7100046AF20 /* TreasureData.swift */; };
+		BF2AF2701D8EC7100046AF20 /* TreasureDataSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2AF2641D8EC7100046AF20 /* TreasureDataSDK.h */; };
+		BF2AF2711D8EC7100046AF20 /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2651D8EC7100046AF20 /* Uploader.swift */; };
+		BF2AF2721D8EC7100046AF20 /* UploadingDiscriminator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2661D8EC7100046AF20 /* UploadingDiscriminator.swift */; };
+		BF2AF2731D8EC7100046AF20 /* UploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2671D8EC7100046AF20 /* UploadRequest.swift */; };
+		BF2AF2771D8EC9270046AF20 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AF2751D8EC9270046AF20 /* Realm.framework */; };
+		BF2AF2781D8EC9270046AF20 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AF2761D8EC9270046AF20 /* RealmSwift.framework */; };
+		BF2AF27A1D8F59630046AF20 /* Realm.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AF2751D8EC9270046AF20 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF2AF27B1D8F59630046AF20 /* RealmSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AF2761D8EC9270046AF20 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF2AF28A1D8F59840046AF20 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF27D1D8F59840046AF20 /* ConfigurationTests.swift */; };
+		BF2AF28B1D8F59840046AF20 /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF27E1D8F59840046AF20 /* DeviceTests.swift */; };
+		BF2AF28C1D8F59840046AF20 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF27F1D8F59840046AF20 /* EventTests.swift */; };
+		BF2AF2901D8F59840046AF20 /* TreasureDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2851D8F59840046AF20 /* TreasureDataTests.swift */; };
+		BF2AF2911D8F59840046AF20 /* UIDevice+DeviceModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2861D8F59840046AF20 /* UIDevice+DeviceModelTests.swift */; };
+		BF2AF2921D8F59840046AF20 /* UploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2871D8F59840046AF20 /* UploaderTests.swift */; };
+		BF2AF2931D8F59840046AF20 /* UploadingDiscriminatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2881D8F59840046AF20 /* UploadingDiscriminatorTests.swift */; };
+		BF2AF2941D8F59840046AF20 /* UploadRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2891D8F59840046AF20 /* UploadRequestTests.swift */; };
+		BF2AF2991D8F59A40046AF20 /* URLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2971D8F59A40046AF20 /* URLSessionStub.swift */; };
+		BF2AF29A1D8F59A40046AF20 /* UIDeviceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF2981D8F59A40046AF20 /* UIDeviceStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BF65383F1CABC4C6002CFF55 /* PBXContainerItemProxy */ = {
+		BF2AF2271D8EC58B0046AF20 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BF65382A1CABC4C5002CFF55 /* Project object */;
+			containerPortal = BF2AF2131D8EC58B0046AF20 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BF6538321CABC4C5002CFF55;
+			remoteGlobalIDString = BF2AF21B1D8EC58B0046AF20;
 			remoteInfo = TreasureDataSDK;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BF2AF2791D8F59570046AF20 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF2AF27A1D8F59630046AF20 /* Realm.framework in Copy Frameworks */,
+				BF2AF27B1D8F59630046AF20 /* RealmSwift.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		6A470B3D1D7E742300E91EFF /* UploadRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRequest.swift; sourceTree = "<group>"; };
-		6A470B3F1D7E80A900E91EFF /* UploadRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRequestTests.swift; sourceTree = "<group>"; };
-		6A5D018F1D7FA199007B3F64 /* RealmFileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmFileHandler.swift; path = Helpers/RealmFileHandler.swift; sourceTree = "<group>"; };
-		6A5D01991D7FDCAF007B3F64 /* UploadingDiscriminator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadingDiscriminator.swift; sourceTree = "<group>"; };
-		6A5D019C1D7FF7EA007B3F64 /* UploadingDiscriminatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadingDiscriminatorTests.swift; sourceTree = "<group>"; };
-		BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceStub.swift; sourceTree = "<group>"; };
-		BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
-		BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasureDataTests.swift; sourceTree = "<group>"; };
-		BF29CE5F1CB224A6003DE779 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
-		BF29CE671CB243C5003DE779 /* String+PathComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+PathComponent.swift"; sourceTree = "<group>"; };
-		BF5729E01CCB6B480086F9B4 /* DeviceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTests.swift; sourceTree = "<group>"; };
-		BF5729E21CCB6F250086F9B4 /* UIDevice+DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceModel.swift"; sourceTree = "<group>"; };
-		BF5729EB1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceModelTests.swift"; sourceTree = "<group>"; };
-		BF5FF2F51CCC8821000361CC /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
-		BF5FF3371CCCA005000361CC /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		BF6538331CABC4C5002CFF55 /* TreasureDataSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TreasureDataSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF6538361CABC4C5002CFF55 /* TreasureDataSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreasureDataSDK.h; sourceTree = "<group>"; };
-		BF6538381CABC4C5002CFF55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF65383D1CABC4C6002CFF55 /* TreasureDataSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreasureDataSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF6538421CABC4C6002CFF55 /* TreasureDataSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasureDataSDKTests.swift; sourceTree = "<group>"; };
-		BF6538441CABC4C6002CFF55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF65384D1CABD185002CFF55 /* TreasureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasureData.swift; sourceTree = "<group>"; };
-		BF65384F1CABD1B6002CFF55 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		BF6538511CABD1C1002CFF55 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		BF6538531CABD24E002CFF55 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
-		BF6538541CABD24E002CFF55 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		BF9AD0971CBB8DF600E38434 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		BFE4C40D1CCCCE7500FA6BE2 /* NSURLSessionStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionStub.swift; sourceTree = "<group>"; };
-		BFE4C4141CCCD2AE00FA6BE2 /* UploaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploaderTests.swift; sourceTree = "<group>"; };
+		BF2AF21C1D8EC58B0046AF20 /* TreasureDataSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TreasureDataSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF2AF21F1D8EC58B0046AF20 /* TreasureDataSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreasureDataSDK.h; sourceTree = "<group>"; };
+		BF2AF2201D8EC58B0046AF20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF2AF2251D8EC58B0046AF20 /* TreasureDataSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreasureDataSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF2AF22C1D8EC58B0046AF20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF2AF2591D8EC7100046AF20 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		BF2AF25A1D8EC7100046AF20 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		BF2AF25C1D8EC7100046AF20 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		BF2AF25D1D8EC7100046AF20 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		BF2AF25F1D8EC7100046AF20 /* String+PathComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+PathComponent.swift"; sourceTree = "<group>"; };
+		BF2AF2601D8EC7100046AF20 /* UIDevice+DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceModel.swift"; sourceTree = "<group>"; };
+		BF2AF2621D8EC7100046AF20 /* RealmFileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmFileHandler.swift; sourceTree = "<group>"; };
+		BF2AF2631D8EC7100046AF20 /* TreasureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasureData.swift; sourceTree = "<group>"; };
+		BF2AF2641D8EC7100046AF20 /* TreasureDataSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreasureDataSDK.h; sourceTree = "<group>"; };
+		BF2AF2651D8EC7100046AF20 /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
+		BF2AF2661D8EC7100046AF20 /* UploadingDiscriminator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadingDiscriminator.swift; sourceTree = "<group>"; };
+		BF2AF2671D8EC7100046AF20 /* UploadRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRequest.swift; sourceTree = "<group>"; };
+		BF2AF2751D8EC9270046AF20 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		BF2AF2761D8EC9270046AF20 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		BF2AF27D1D8F59840046AF20 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
+		BF2AF27E1D8F59840046AF20 /* DeviceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTests.swift; sourceTree = "<group>"; };
+		BF2AF27F1D8F59840046AF20 /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
+		BF2AF2851D8F59840046AF20 /* TreasureDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreasureDataTests.swift; sourceTree = "<group>"; };
+		BF2AF2861D8F59840046AF20 /* UIDevice+DeviceModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceModelTests.swift"; sourceTree = "<group>"; };
+		BF2AF2871D8F59840046AF20 /* UploaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploaderTests.swift; sourceTree = "<group>"; };
+		BF2AF2881D8F59840046AF20 /* UploadingDiscriminatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadingDiscriminatorTests.swift; sourceTree = "<group>"; };
+		BF2AF2891D8F59840046AF20 /* UploadRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadRequestTests.swift; sourceTree = "<group>"; };
+		BF2AF2971D8F59A40046AF20 /* URLSessionStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionStub.swift; sourceTree = "<group>"; };
+		BF2AF2981D8F59A40046AF20 /* UIDeviceStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BF65382F1CABC4C5002CFF55 /* Frameworks */ = {
+		BF2AF2181D8EC58B0046AF20 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF6538551CABD24E002CFF55 /* Realm.framework in Frameworks */,
-				BF6538561CABD24E002CFF55 /* RealmSwift.framework in Frameworks */,
+				BF2AF2771D8EC9270046AF20 /* Realm.framework in Frameworks */,
+				BF2AF2781D8EC9270046AF20 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF65383A1CABC4C6002CFF55 /* Frameworks */ = {
+		BF2AF2221D8EC58B0046AF20 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF65383E1CABC4C6002CFF55 /* TreasureDataSDK.framework in Frameworks */,
+				BF2AF2261D8EC58B0046AF20 /* TreasureDataSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6A5D018E1D7FA12C007B3F64 /* Helpers */ = {
+		BF2AF2121D8EC58B0046AF20 = {
 			isa = PBXGroup;
 			children = (
-				6A5D018F1D7FA199007B3F64 /* RealmFileHandler.swift */,
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
-		BF0ACC731CCB809B00C70F4E /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				BF0ACC751CCB841D00C70F4E /* Extensions */,
-				BF0ACC741CCB841200C70F4E /* Stubs */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		BF0ACC741CCB841200C70F4E /* Stubs */ = {
-			isa = PBXGroup;
-			children = (
-				BF0ACC7B1CCB85A700C70F4E /* UIDeviceStub.swift */,
-				BFE4C40D1CCCCE7500FA6BE2 /* NSURLSessionStub.swift */,
-			);
-			path = Stubs;
-			sourceTree = "<group>";
-		};
-		BF0ACC751CCB841D00C70F4E /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		BF29CE661CB24377003DE779 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				BF29CE671CB243C5003DE779 /* String+PathComponent.swift */,
-				BF5729E21CCB6F250086F9B4 /* UIDevice+DeviceModel.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		BF5729DD1CCB5FBE0086F9B4 /* Enumerations */ = {
-			isa = PBXGroup;
-			children = (
-				BF5FF3371CCCA005000361CC /* Result.swift */,
-			);
-			path = Enumerations;
-			sourceTree = "<group>";
-		};
-		BF5729EA1CCB72D20086F9B4 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				BF5729EB1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
-		BF6538291CABC4C5002CFF55 = {
-			isa = PBXGroup;
-			children = (
-				BF6538571CABD253002CFF55 /* Frameworks */,
-				BF6538351CABC4C5002CFF55 /* TreasureDataSDK */,
-				BF6538411CABC4C6002CFF55 /* TreasureDataSDKTests */,
-				BF6538341CABC4C5002CFF55 /* Products */,
+				BF2AF21E1D8EC58B0046AF20 /* TreasureDataSDK */,
+				BF2AF2291D8EC58B0046AF20 /* TreasureDataSDKTests */,
+				BF2AF21D1D8EC58B0046AF20 /* Products */,
+				BF2AF2741D8EC9270046AF20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		BF6538341CABC4C5002CFF55 /* Products */ = {
+		BF2AF21D1D8EC58B0046AF20 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF6538331CABC4C5002CFF55 /* TreasureDataSDK.framework */,
-				BF65383D1CABC4C6002CFF55 /* TreasureDataSDKTests.xctest */,
+				BF2AF21C1D8EC58B0046AF20 /* TreasureDataSDK.framework */,
+				BF2AF2251D8EC58B0046AF20 /* TreasureDataSDKTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BF6538351CABC4C5002CFF55 /* TreasureDataSDK */ = {
+		BF2AF21E1D8EC58B0046AF20 /* TreasureDataSDK */ = {
 			isa = PBXGroup;
 			children = (
-				6A5D018E1D7FA12C007B3F64 /* Helpers */,
-				BF5729DD1CCB5FBE0086F9B4 /* Enumerations */,
-				BF29CE661CB24377003DE779 /* Extensions */,
-				BF6538361CABC4C5002CFF55 /* TreasureDataSDK.h */,
-				BF6538381CABC4C5002CFF55 /* Info.plist */,
-				BF65384D1CABD185002CFF55 /* TreasureData.swift */,
-				BF65384F1CABD1B6002CFF55 /* Configuration.swift */,
-				BF6538511CABD1C1002CFF55 /* Event.swift */,
-				BF9AD0971CBB8DF600E38434 /* Device.swift */,
-				BF5FF2F51CCC8821000361CC /* Uploader.swift */,
-				6A5D01991D7FDCAF007B3F64 /* UploadingDiscriminator.swift */,
-				6A470B3D1D7E742300E91EFF /* UploadRequest.swift */,
+				BF2AF21F1D8EC58B0046AF20 /* TreasureDataSDK.h */,
+				BF2AF2581D8EC7100046AF20 /* Source */,
+				BF2AF2201D8EC58B0046AF20 /* Info.plist */,
 			);
 			path = TreasureDataSDK;
 			sourceTree = "<group>";
 		};
-		BF6538411CABC4C6002CFF55 /* TreasureDataSDKTests */ = {
+		BF2AF2291D8EC58B0046AF20 /* TreasureDataSDKTests */ = {
 			isa = PBXGroup;
 			children = (
-				BF0ACC731CCB809B00C70F4E /* Helpers */,
-				BF5729EA1CCB72D20086F9B4 /* Extensions */,
-				BF6538421CABC4C6002CFF55 /* TreasureDataSDKTests.swift */,
-				BF6538441CABC4C6002CFF55 /* Info.plist */,
-				BF29CE5F1CB224A6003DE779 /* ConfigurationTests.swift */,
-				BF5729E01CCB6B480086F9B4 /* DeviceTests.swift */,
-				BF0ACC7F1CCB8E4700C70F4E /* EventTests.swift */,
-				BF0ACC811CCB930100C70F4E /* TreasureDataTests.swift */,
-				BFE4C4141CCCD2AE00FA6BE2 /* UploaderTests.swift */,
-				6A470B3F1D7E80A900E91EFF /* UploadRequestTests.swift */,
-				6A5D019C1D7FF7EA007B3F64 /* UploadingDiscriminatorTests.swift */,
+				BF2AF2951D8F59A40046AF20 /* TestHelpers */,
+				BF2AF27C1D8F59840046AF20 /* Tests */,
+				BF2AF22C1D8EC58B0046AF20 /* Info.plist */,
 			);
 			path = TreasureDataSDKTests;
 			sourceTree = "<group>";
 		};
-		BF6538571CABD253002CFF55 /* Frameworks */ = {
+		BF2AF2581D8EC7100046AF20 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BF6538531CABD24E002CFF55 /* Realm.framework */,
-				BF6538541CABD24E002CFF55 /* RealmSwift.framework */,
+				BF2AF2591D8EC7100046AF20 /* Configuration.swift */,
+				BF2AF25A1D8EC7100046AF20 /* Device.swift */,
+				BF2AF25B1D8EC7100046AF20 /* Enumerations */,
+				BF2AF25D1D8EC7100046AF20 /* Event.swift */,
+				BF2AF25E1D8EC7100046AF20 /* Extensions */,
+				BF2AF2611D8EC7100046AF20 /* Helpers */,
+				BF2AF2631D8EC7100046AF20 /* TreasureData.swift */,
+				BF2AF2641D8EC7100046AF20 /* TreasureDataSDK.h */,
+				BF2AF2651D8EC7100046AF20 /* Uploader.swift */,
+				BF2AF2661D8EC7100046AF20 /* UploadingDiscriminator.swift */,
+				BF2AF2671D8EC7100046AF20 /* UploadRequest.swift */,
+			);
+			path = Source;
+			sourceTree = SOURCE_ROOT;
+		};
+		BF2AF25B1D8EC7100046AF20 /* Enumerations */ = {
+			isa = PBXGroup;
+			children = (
+				BF2AF25C1D8EC7100046AF20 /* Result.swift */,
+			);
+			path = Enumerations;
+			sourceTree = "<group>";
+		};
+		BF2AF25E1D8EC7100046AF20 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BF2AF25F1D8EC7100046AF20 /* String+PathComponent.swift */,
+				BF2AF2601D8EC7100046AF20 /* UIDevice+DeviceModel.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BF2AF2611D8EC7100046AF20 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BF2AF2621D8EC7100046AF20 /* RealmFileHandler.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BF2AF2741D8EC9270046AF20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF2AF2751D8EC9270046AF20 /* Realm.framework */,
+				BF2AF2761D8EC9270046AF20 /* RealmSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF2AF27C1D8F59840046AF20 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BF2AF27D1D8F59840046AF20 /* ConfigurationTests.swift */,
+				BF2AF27E1D8F59840046AF20 /* DeviceTests.swift */,
+				BF2AF27F1D8F59840046AF20 /* EventTests.swift */,
+				BF2AF2851D8F59840046AF20 /* TreasureDataTests.swift */,
+				BF2AF2861D8F59840046AF20 /* UIDevice+DeviceModelTests.swift */,
+				BF2AF2871D8F59840046AF20 /* UploaderTests.swift */,
+				BF2AF2881D8F59840046AF20 /* UploadingDiscriminatorTests.swift */,
+				BF2AF2891D8F59840046AF20 /* UploadRequestTests.swift */,
+			);
+			path = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		BF2AF2951D8F59A40046AF20 /* TestHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				BF2AF2961D8F59A40046AF20 /* Stubs */,
+			);
+			path = TestHelpers;
+			sourceTree = SOURCE_ROOT;
+		};
+		BF2AF2961D8F59A40046AF20 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				BF2AF2971D8F59A40046AF20 /* URLSessionStub.swift */,
+				BF2AF2981D8F59A40046AF20 /* UIDeviceStub.swift */,
+			);
+			path = Stubs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		BF6538301CABC4C5002CFF55 /* Headers */ = {
+		BF2AF2191D8EC58B0046AF20 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF6538371CABC4C5002CFF55 /* TreasureDataSDK.h in Headers */,
+				BF2AF2701D8EC7100046AF20 /* TreasureDataSDK.h in Headers */,
+				BF2AF22D1D8EC58B0046AF20 /* TreasureDataSDK.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		BF6538321CABC4C5002CFF55 /* TreasureDataSDK */ = {
+		BF2AF21B1D8EC58B0046AF20 /* TreasureDataSDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF6538471CABC4C6002CFF55 /* Build configuration list for PBXNativeTarget "TreasureDataSDK" */;
+			buildConfigurationList = BF2AF2301D8EC58B0046AF20 /* Build configuration list for PBXNativeTarget "TreasureDataSDK" */;
 			buildPhases = (
-				BF65382E1CABC4C5002CFF55 /* Sources */,
-				BF65382F1CABC4C5002CFF55 /* Frameworks */,
-				BF6538301CABC4C5002CFF55 /* Headers */,
-				BF6538311CABC4C5002CFF55 /* Resources */,
+				BF2AF2171D8EC58B0046AF20 /* Sources */,
+				BF2AF2181D8EC58B0046AF20 /* Frameworks */,
+				BF2AF2191D8EC58B0046AF20 /* Headers */,
+				BF2AF21A1D8EC58B0046AF20 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -250,72 +268,78 @@
 			);
 			name = TreasureDataSDK;
 			productName = TreasureDataSDK;
-			productReference = BF6538331CABC4C5002CFF55 /* TreasureDataSDK.framework */;
+			productReference = BF2AF21C1D8EC58B0046AF20 /* TreasureDataSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		BF65383C1CABC4C6002CFF55 /* TreasureDataSDKTests */ = {
+		BF2AF2241D8EC58B0046AF20 /* TreasureDataSDKTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF65384A1CABC4C6002CFF55 /* Build configuration list for PBXNativeTarget "TreasureDataSDKTests" */;
+			buildConfigurationList = BF2AF2331D8EC58B0046AF20 /* Build configuration list for PBXNativeTarget "TreasureDataSDKTests" */;
 			buildPhases = (
-				BF6538391CABC4C6002CFF55 /* Sources */,
-				BF65383A1CABC4C6002CFF55 /* Frameworks */,
-				BF65383B1CABC4C6002CFF55 /* Resources */,
+				BF2AF2211D8EC58B0046AF20 /* Sources */,
+				BF2AF2221D8EC58B0046AF20 /* Frameworks */,
+				BF2AF2231D8EC58B0046AF20 /* Resources */,
+				BF2AF2791D8F59570046AF20 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BF6538401CABC4C6002CFF55 /* PBXTargetDependency */,
+				BF2AF2281D8EC58B0046AF20 /* PBXTargetDependency */,
 			);
 			name = TreasureDataSDKTests;
 			productName = TreasureDataSDKTests;
-			productReference = BF65383D1CABC4C6002CFF55 /* TreasureDataSDKTests.xctest */;
+			productReference = BF2AF2251D8EC58B0046AF20 /* TreasureDataSDKTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BF65382A1CABC4C5002CFF55 /* Project object */ = {
+		BF2AF2131D8EC58B0046AF20 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Recruit Lifestyle Co., Ltd.";
 				TargetAttributes = {
-					BF6538321CABC4C5002CFF55 = {
-						CreatedOnToolsVersion = 7.3;
+					BF2AF21B1D8EC58B0046AF20 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 4HG2762R5U;
+						ProvisioningStyle = Automatic;
 					};
-					BF65383C1CABC4C6002CFF55 = {
-						CreatedOnToolsVersion = 7.3;
+					BF2AF2241D8EC58B0046AF20 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 4HG2762R5U;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = BF65382D1CABC4C5002CFF55 /* Build configuration list for PBXProject "TreasureDataSDK" */;
+			buildConfigurationList = BF2AF2161D8EC58B0046AF20 /* Build configuration list for PBXProject "TreasureDataSDK" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = BF6538291CABC4C5002CFF55;
-			productRefGroup = BF6538341CABC4C5002CFF55 /* Products */;
+			mainGroup = BF2AF2121D8EC58B0046AF20;
+			productRefGroup = BF2AF21D1D8EC58B0046AF20 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BF6538321CABC4C5002CFF55 /* TreasureDataSDK */,
-				BF65383C1CABC4C6002CFF55 /* TreasureDataSDKTests */,
+				BF2AF21B1D8EC58B0046AF20 /* TreasureDataSDK */,
+				BF2AF2241D8EC58B0046AF20 /* TreasureDataSDKTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BF6538311CABC4C5002CFF55 /* Resources */ = {
+		BF2AF21A1D8EC58B0046AF20 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF65383B1CABC4C6002CFF55 /* Resources */ = {
+		BF2AF2231D8EC58B0046AF20 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -325,54 +349,53 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BF65382E1CABC4C5002CFF55 /* Sources */ = {
+		BF2AF2171D8EC58B0046AF20 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A5D01901D7FA199007B3F64 /* RealmFileHandler.swift in Sources */,
-				BF6538501CABD1B6002CFF55 /* Configuration.swift in Sources */,
-				BF5FF3381CCCA005000361CC /* Result.swift in Sources */,
-				BF5FF2F61CCC8821000361CC /* Uploader.swift in Sources */,
-				6A5D019A1D7FDCAF007B3F64 /* UploadingDiscriminator.swift in Sources */,
-				BF6538521CABD1C1002CFF55 /* Event.swift in Sources */,
-				BF65384E1CABD185002CFF55 /* TreasureData.swift in Sources */,
-				BF5729E31CCB6F250086F9B4 /* UIDevice+DeviceModel.swift in Sources */,
-				BF29CE681CB243C5003DE779 /* String+PathComponent.swift in Sources */,
-				BF9AD0981CBB8DF600E38434 /* Device.swift in Sources */,
-				6A470B3E1D7E742300E91EFF /* UploadRequest.swift in Sources */,
+				BF2AF26B1D8EC7100046AF20 /* Event.swift in Sources */,
+				BF2AF26E1D8EC7100046AF20 /* RealmFileHandler.swift in Sources */,
+				BF2AF26F1D8EC7100046AF20 /* TreasureData.swift in Sources */,
+				BF2AF2711D8EC7100046AF20 /* Uploader.swift in Sources */,
+				BF2AF2721D8EC7100046AF20 /* UploadingDiscriminator.swift in Sources */,
+				BF2AF2731D8EC7100046AF20 /* UploadRequest.swift in Sources */,
+				BF2AF26A1D8EC7100046AF20 /* Result.swift in Sources */,
+				BF2AF26C1D8EC7100046AF20 /* String+PathComponent.swift in Sources */,
+				BF2AF26D1D8EC7100046AF20 /* UIDevice+DeviceModel.swift in Sources */,
+				BF2AF2681D8EC7100046AF20 /* Configuration.swift in Sources */,
+				BF2AF2691D8EC7100046AF20 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF6538391CABC4C6002CFF55 /* Sources */ = {
+		BF2AF2211D8EC58B0046AF20 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF0ACC7C1CCB85A700C70F4E /* UIDeviceStub.swift in Sources */,
-				BF29CE601CB224A6003DE779 /* ConfigurationTests.swift in Sources */,
-				BF0ACC821CCB930100C70F4E /* TreasureDataTests.swift in Sources */,
-				BF5729EC1CCB72E20086F9B4 /* UIDevice+DeviceModelTests.swift in Sources */,
-				BFE4C4151CCCD2AE00FA6BE2 /* UploaderTests.swift in Sources */,
-				6A5D019D1D7FF7EA007B3F64 /* UploadingDiscriminatorTests.swift in Sources */,
-				BF6538431CABC4C6002CFF55 /* TreasureDataSDKTests.swift in Sources */,
-				BF0ACC801CCB8E4700C70F4E /* EventTests.swift in Sources */,
-				BF5729E11CCB6B480086F9B4 /* DeviceTests.swift in Sources */,
-				6A470B401D7E80A900E91EFF /* UploadRequestTests.swift in Sources */,
-				BFE4C40E1CCCCE7500FA6BE2 /* NSURLSessionStub.swift in Sources */,
+				BF2AF2931D8F59840046AF20 /* UploadingDiscriminatorTests.swift in Sources */,
+				BF2AF29A1D8F59A40046AF20 /* UIDeviceStub.swift in Sources */,
+				BF2AF2901D8F59840046AF20 /* TreasureDataTests.swift in Sources */,
+				BF2AF2991D8F59A40046AF20 /* URLSessionStub.swift in Sources */,
+				BF2AF28A1D8F59840046AF20 /* ConfigurationTests.swift in Sources */,
+				BF2AF2921D8F59840046AF20 /* UploaderTests.swift in Sources */,
+				BF2AF28C1D8F59840046AF20 /* EventTests.swift in Sources */,
+				BF2AF28B1D8F59840046AF20 /* DeviceTests.swift in Sources */,
+				BF2AF2941D8F59840046AF20 /* UploadRequestTests.swift in Sources */,
+				BF2AF2911D8F59840046AF20 /* UIDevice+DeviceModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BF6538401CABC4C6002CFF55 /* PBXTargetDependency */ = {
+		BF2AF2281D8EC58B0046AF20 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF6538321CABC4C5002CFF55 /* TreasureDataSDK */;
-			targetProxy = BF65383F1CABC4C6002CFF55 /* PBXContainerItemProxy */;
+			target = BF2AF21B1D8EC58B0046AF20 /* TreasureDataSDK */;
+			targetProxy = BF2AF2271D8EC58B0046AF20 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		BF6538451CABC4C6002CFF55 /* Debug */ = {
+		BF2AF22E1D8EC58B0046AF20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -384,10 +407,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -414,6 +440,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -421,7 +448,7 @@
 			};
 			name = Debug;
 		};
-		BF6538461CABC4C6002CFF55 /* Release */ = {
+		BF2AF22F1D8EC58B0046AF20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -433,10 +460,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -456,6 +486,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -463,11 +494,12 @@
 			};
 			name = Release;
 		};
-		BF6538481CABC4C6002CFF55 /* Debug */ = {
+		BF2AF2311D8EC58B0046AF20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4HG2762R5U;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -481,15 +513,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.recruit-lifestyle.TreasureDataSDK";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		BF6538491CABC4C6002CFF55 /* Release */ = {
+		BF2AF2321D8EC58B0046AF20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4HG2762R5U;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -503,12 +536,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.recruit-lifestyle.TreasureDataSDK";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
-		BF65384B1CABC4C6002CFF55 /* Debug */ = {
+		BF2AF2341D8EC58B0046AF20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 4HG2762R5U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -517,12 +553,15 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.recruit-lifestyle.TreasureDataSDKTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		BF65384C1CABC4C6002CFF55 /* Release */ = {
+		BF2AF2351D8EC58B0046AF20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 4HG2762R5U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -531,40 +570,41 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.recruit-lifestyle.TreasureDataSDKTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BF65382D1CABC4C5002CFF55 /* Build configuration list for PBXProject "TreasureDataSDK" */ = {
+		BF2AF2161D8EC58B0046AF20 /* Build configuration list for PBXProject "TreasureDataSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF6538451CABC4C6002CFF55 /* Debug */,
-				BF6538461CABC4C6002CFF55 /* Release */,
+				BF2AF22E1D8EC58B0046AF20 /* Debug */,
+				BF2AF22F1D8EC58B0046AF20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF6538471CABC4C6002CFF55 /* Build configuration list for PBXNativeTarget "TreasureDataSDK" */ = {
+		BF2AF2301D8EC58B0046AF20 /* Build configuration list for PBXNativeTarget "TreasureDataSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF6538481CABC4C6002CFF55 /* Debug */,
-				BF6538491CABC4C6002CFF55 /* Release */,
+				BF2AF2311D8EC58B0046AF20 /* Debug */,
+				BF2AF2321D8EC58B0046AF20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF65384A1CABC4C6002CFF55 /* Build configuration list for PBXNativeTarget "TreasureDataSDKTests" */ = {
+		BF2AF2331D8EC58B0046AF20 /* Build configuration list for PBXNativeTarget "TreasureDataSDKTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF65384B1CABC4C6002CFF55 /* Debug */,
-				BF65384C1CABC4C6002CFF55 /* Release */,
+				BF2AF2341D8EC58B0046AF20 /* Debug */,
+				BF2AF2351D8EC58B0046AF20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BF65382A1CABC4C5002CFF55 /* Project object */;
+	rootObject = BF2AF2131D8EC58B0046AF20 /* Project object */;
 }
