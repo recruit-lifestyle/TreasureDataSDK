@@ -41,7 +41,6 @@ internal struct Uploader {
             return
         }
         
-        
         let targetEvents = Array(events.sorted(byKeyPath: #keyPath(Event.timestamp)).prefix(limit))
         let targetEventIDs = targetEvents.map { $0.id }
         
