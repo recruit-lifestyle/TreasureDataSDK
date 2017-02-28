@@ -42,19 +42,26 @@ internal struct Uploader {
         }
         
         
-        let numberOfUploadingEvents = min(events.count, limit)
-        let targetEvents = Array(events.sorted(byKeyPath: #keyPath(Event.timestamp)).prefix(numberOfUploadingEvents))
+        let targetEvents = Array(events.sorted(byKeyPath: #keyPath(Event.timestamp)).prefix(limit))
+        let targetEventIDs = targetEvents.map { $0.id }
         
         self.uploadEvents(events: targetEvents) { result, responseJson in
-            guard let sortedEvents = Event.events(configuration: self.configuration)?.sorted(byKeyPath: #keyPath(Event.timestamp)) else {
+            let uploadedEventIDs = responseJson.map { $0["success"] ?? false }.enumerated().flatMap { index, value in
+                 return value && index < targetEventIDs.count ? targetEventIDs[index] : nil
+            }
+
+            let predicate = NSPredicate(
+                format: "database = %@ AND table = %@ AND id IN %@",
+                self.configuration.database,
+                self.configuration.table,
+                uploadedEventIDs
+            )
+
+            guard let uploadedEvents = self.configuration.realm?.objects(Event.self).filter(predicate) else {
                 completion?(.databaseUnavailable)
                 return
             }
-            
-            let uploadedEvents = responseJson.map { $0["success"] ?? false }.enumerated().flatMap { index, value in
-                return value && index < numberOfUploadingEvents ? sortedEvents[index] : nil
-            }
-            
+
             if uploadedEvents.count > 0 {
                 // Delete events that succeeded to be uploaded.
                 autoreleasepool {
